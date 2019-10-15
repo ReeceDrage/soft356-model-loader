@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+Model Loader/ModelLoader/.vs/ModelLoader/v16/Browse.VC.db
+Model Loader/ModelLoader/.vs/ModelLoader/v16/Browse.VC.opendb
