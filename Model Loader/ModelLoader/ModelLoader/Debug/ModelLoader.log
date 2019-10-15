@@ -1,2 +1,6 @@
 ﻿  ModelLoader.cpp
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(44,21): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(66,21): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(90,21): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(100,22): warning C4018:  '<': signed/unsigned mismatch
   ModelLoader.vcxproj -> D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\ModelLoader.exe
