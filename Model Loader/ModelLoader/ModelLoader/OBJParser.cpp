@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "OBJParser.h"
 
 using namespace std;
 
@@ -33,7 +34,45 @@ struct ModelData
 	vector<FaceRecord> faceVector;
 };
 
-void TestFunction()
+void OBJParser::SplitString(string originalString, vector<string>* returnedString, string separator)
 {
-	cout << "Test Function Run" << endl;
+	// Create a buffer and set indices for string indexing to 0
+	string buffer;
+
+	size_t startingIndex = 0;
+	size_t foundIndex = 0;
+
+	// While foundIndex does not equal the termination value, repeatedly find the next instance 
+	// of the separator string and return the index
+	while ((foundIndex = originalString.find(separator, foundIndex + 1)) != string::npos)
+	{
+		// Get the substring from the start of the substring to the found separator and store
+		buffer = originalString.substr(startingIndex, foundIndex - startingIndex);
+		returnedString->push_back(buffer);
+
+		// Start from the end of the previous substring on the next iteration
+		startingIndex = foundIndex + 1;
+	}
+
+	// Get the final substring from the end of the previous substring to the end of the string and store
+	buffer = originalString.substr(startingIndex, originalString.length() - startingIndex);
+	returnedString->push_back(buffer);
+}
+
+void OBJParser::TestFunction()
+{
+	string testString = "This is my testing string";
+	string separator = " ";
+	vector<string> finalString;
+
+	SplitString(testString, &finalString, separator);
+
+	cout << "Test string: " << testString << endl;
+	cout << "Separation string: " << separator << endl;
+	cout << "Final string : " << endl;
+
+	for (int i = 0; i < finalString.size(); i++)
+	{
+		cout << finalString[i] << endl;
+	}
 }

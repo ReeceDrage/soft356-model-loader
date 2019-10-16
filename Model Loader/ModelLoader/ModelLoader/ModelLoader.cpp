@@ -33,7 +33,8 @@ int main(int argc, char** argv)
 	}
 
 	// Test function contained in OBJParser.h, outputs a test message to the console
-	TestFunction();
+	OBJParser parser;
+	parser.TestFunction();
 
 	glfwInit();
 	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Render Window", NULL, NULL);
