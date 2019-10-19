@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "OBJParser.h"
 
 using namespace std;
@@ -65,18 +66,28 @@ void OBJParser::RemoveWhiteSpace(string originalString, vector<string>* returned
 	SplitString(originalString, returnedString, seperator);
 }
 
+void OBJParser::ExtractVertexData(string faceData, FaceRecordVertex* vertexRecord)
+{
+	string seperator = "/";
+	vector<string> returnedString;
+
+	// Convert returned strings into float values
+	SplitString(faceData, &returnedString, seperator);
+	(*vertexRecord).vertexIndex = stof(returnedString[0]);
+	(*vertexRecord).textureIndex = stof(returnedString[1]);
+	(*vertexRecord).normalIndex = stof(returnedString[2]);
+}
+
 void OBJParser::TestFunction()
 {
-	string testString = "This is my testing string";
-	vector<string> finalString;
+	string testString = "12/13/14";
+	FaceRecordVertex vertexRecord;
 
-	RemoveWhiteSpace(testString, &finalString);
+	ExtractVertexData(testString, &vertexRecord);
 
 	cout << "Test string: " << testString << endl;
-	cout << "Final string : " << endl << endl;
-
-	for (int i = 0; i < finalString.size(); i++)
-	{
-		cout << finalString[i] << endl;
-	}
+	cout << "Final vertex record: " << endl;
+	cout << "Vertex Index: " << vertexRecord.vertexIndex << endl;
+	cout << "Texture Index: " << vertexRecord.textureIndex << endl;
+	cout << "Normal Index: " << vertexRecord.normalIndex << endl;
 }

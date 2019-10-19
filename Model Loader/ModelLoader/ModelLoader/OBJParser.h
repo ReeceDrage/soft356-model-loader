@@ -12,6 +12,7 @@ class OBJParser
 private:
 	void SplitString(string originalString, vector<string>* returnedString, string separator);
 	void RemoveWhiteSpace(string originalString, vector<string>* returnedString);
+	void ExtractVertexData(string faceData, FaceRecordVertex* vertexRecord);
 
 public:
 	void TestFunction();
