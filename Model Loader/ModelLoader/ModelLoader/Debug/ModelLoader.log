@@ -1,4 +1,7 @@
 ﻿  ModelLoader.cpp
+  OBJParser.cpp
+  Generating Code...
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(78,20): warning C4018:  '<': signed/unsigned mismatch
   LINK : 0 new modules and 2 (out of 46) modules have changed since prior linking
   Generating non-SAFESEH image.
   Starting pass 2

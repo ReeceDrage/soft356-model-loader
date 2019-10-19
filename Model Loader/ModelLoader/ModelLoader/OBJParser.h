@@ -11,6 +11,7 @@ class OBJParser
 {
 private:
 	void SplitString(string originalString, vector<string>* returnedString, string separator);
+	void RemoveWhiteSpace(string originalString, vector<string>* returnedString);
 
 public:
 	void TestFunction();

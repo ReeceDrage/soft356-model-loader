@@ -59,17 +59,21 @@ void OBJParser::SplitString(string originalString, vector<string>* returnedStrin
 	returnedString->push_back(buffer);
 }
 
+void OBJParser::RemoveWhiteSpace(string originalString, vector<string>* returnedString)
+{
+	string seperator = " ";
+	SplitString(originalString, returnedString, seperator);
+}
+
 void OBJParser::TestFunction()
 {
 	string testString = "This is my testing string";
-	string separator = " ";
 	vector<string> finalString;
 
-	SplitString(testString, &finalString, separator);
+	RemoveWhiteSpace(testString, &finalString);
 
 	cout << "Test string: " << testString << endl;
-	cout << "Separation string: " << separator << endl;
-	cout << "Final string : " << endl;
+	cout << "Final string : " << endl << endl;
 
 	for (int i = 0; i < finalString.size(); i++)
 	{
