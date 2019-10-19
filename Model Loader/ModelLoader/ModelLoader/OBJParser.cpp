@@ -25,7 +25,7 @@ struct FaceRecordVertex
 // Holds records of each vertex linked to a face
 struct FaceRecord
 {
-	vector<FaceRecordVertex> vertexVector;
+	FaceRecordVertex vertexArray[3];
 };
 
 // Holds a complete dataset of a parsed model
@@ -34,6 +34,31 @@ struct ModelData
 	vector<VertexRecord> vertexVector;
 	vector<FaceRecord> faceVector;
 };
+
+void OBJParser::ParseFaceData(vector<string>* data, vector<FaceRecord>* returnFaceData)
+{
+	// For every string in the data, iterate, remove unneeded characters and add extracted data to an array
+	for (int i = 0; i < data->size(); i++)
+	{
+		FaceRecord triangleRecord;
+		vector<string> vertexData;
+		string dataString;
+
+		dataString = (*data)[i];
+		RemoveLeadingCharacters(&dataString, 2);
+		RemoveWhiteSpace(dataString, &vertexData);
+
+		for (int j = 0; j < 3; j++)
+		{
+			FaceRecordVertex vertexRecord;
+
+			ExtractVertexData(vertexData[j], &vertexRecord);
+			triangleRecord.vertexArray[j] = vertexRecord;
+		}
+
+		returnFaceData->push_back(triangleRecord);
+	}
+}
 
 void OBJParser::SplitString(string originalString, vector<string>* returnedString, string separator)
 {
@@ -78,16 +103,39 @@ void OBJParser::ExtractVertexData(string faceData, FaceRecordVertex* vertexRecor
 	(*vertexRecord).normalIndex = stof(returnedString[2]);
 }
 
+void OBJParser::RemoveLeadingCharacters(string* dataLine, int numberOfCharacters)
+{
+	// Remove the first numberOfCharacters characters from the string
+	(*dataLine) = dataLine->substr(numberOfCharacters, dataLine->length() - numberOfCharacters);
+}
+
 void OBJParser::TestFunction()
 {
-	string testString = "12/13/14";
-	FaceRecordVertex vertexRecord;
+	vector<string> data;
+	vector<FaceRecord> returnFaceData;
 
-	ExtractVertexData(testString, &vertexRecord);
+	string testStringOne = "f 12/13/14 15/16/17 18/19/20";
+	string testStringTwo = "f 22/23/24 25/26/27 28/29/30";
+	string testStringThree = "f 32/33/34 35/36/37 38/39/40";
 
-	cout << "Test string: " << testString << endl;
-	cout << "Final vertex record: " << endl;
-	cout << "Vertex Index: " << vertexRecord.vertexIndex << endl;
-	cout << "Texture Index: " << vertexRecord.textureIndex << endl;
-	cout << "Normal Index: " << vertexRecord.normalIndex << endl;
+	data.push_back(testStringOne);
+	data.push_back(testStringTwo);
+	data.push_back(testStringThree);
+
+	ParseFaceData(&data, &returnFaceData);
+
+	cout << "Parsed Data: " << endl << endl;
+
+	for (int i = 0; i < returnFaceData.size(); i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			cout << "Vertex Index: " << returnFaceData[i].vertexArray[j].vertexIndex << endl;
+			cout << "Texture Index: " << returnFaceData[i].vertexArray[j].textureIndex << endl;
+			cout << "Normal Index: " << returnFaceData[i].vertexArray[j].normalIndex << endl;
+			cout << endl;
+		}
+
+		cout << endl;
+	}
 }
