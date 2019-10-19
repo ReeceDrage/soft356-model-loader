@@ -19,14 +19,15 @@ int main(int argc, char** argv)
 {
 	// Create input stream
 	string line;
-	vector<string> mapData;
+	vector<string> rawData;
+
 	ifstream myFile("Resources/suzanne.obj");
 
 	if (myFile.is_open())
 	{
 		while (getline(myFile, line))
 		{
-			mapData.push_back(line);
+			rawData.push_back(line);
 		}
 
 		myFile.close();
