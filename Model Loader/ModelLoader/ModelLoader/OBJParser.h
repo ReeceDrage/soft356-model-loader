@@ -15,6 +15,7 @@ private:
 	void ExtractVertexData(string faceData, FaceRecordVertex* vertexRecord);
 	void RemoveLeadingCharacters(string* dataLine, int numberOfCharacters);
 	void ParseFaceData(vector<string>* data, vector<FaceRecord>* returnFaceData);
+	void ParseVertexData(vector<string>* data, vector<VertexRecord>* returnVertexData);
 
 public:
 	void TestFunction();

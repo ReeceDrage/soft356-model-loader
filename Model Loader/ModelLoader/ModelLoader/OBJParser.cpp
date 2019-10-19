@@ -60,6 +60,35 @@ void OBJParser::ParseFaceData(vector<string>* data, vector<FaceRecord>* returnFa
 	}
 }
 
+void OBJParser::ParseVertexData(vector<string>* data, vector<VertexRecord>* returnVertexData)
+{
+	for (int i = 0; i < data->size(); i++)
+	{
+		VertexRecord vertexRecord;
+		vector<string> vertexData;
+		string dataString;
+
+		dataString = (*data)[i];
+		RemoveLeadingCharacters(&dataString, 2);
+		RemoveWhiteSpace(dataString, &vertexData);
+
+		vertexRecord.x = stof(vertexData[0]);
+		vertexRecord.y = stof(vertexData[1]);
+		vertexRecord.z = stof(vertexData[2]);
+
+		if (vertexData.size() < 3)
+		{
+			vertexRecord.w = stof(vertexData[3]);
+		}
+		else
+		{
+			vertexRecord.w = 1;
+		}
+
+		returnVertexData->push_back(vertexRecord);
+	}
+}
+
 void OBJParser::SplitString(string originalString, vector<string>* returnedString, string separator)
 {
 	// Create a buffer and set indices for string indexing to 0
@@ -111,20 +140,31 @@ void OBJParser::RemoveLeadingCharacters(string* dataLine, int numberOfCharacters
 
 void OBJParser::TestFunction()
 {
-	vector<string> data;
+	vector<string> faceData;
+	vector<string> vectorData;
 	vector<FaceRecord> returnFaceData;
+	vector<VertexRecord> returnVectorData;
 
-	string testStringOne = "f 12/13/14 15/16/17 18/19/20";
-	string testStringTwo = "f 22/23/24 25/26/27 28/29/30";
-	string testStringThree = "f 32/33/34 35/36/37 38/39/40";
+	string faceTestOne = "f 12/13/14 15/16/17 18/19/20";
+	string faceTestTwo = "f 22/23/24 25/26/27 28/29/30";
+	string faceTestThree = "f 32/33/34 35/36/37 38/39/40";
 
-	data.push_back(testStringOne);
-	data.push_back(testStringTwo);
-	data.push_back(testStringThree);
+	string vectorTestOne = "v 0.01 0.02 0.03";
+	string vectorTestTwo = "v 0.04 0.05 0.06";
+	string vectorTestThree = "v 0.07 0.08 0.09";
 
-	ParseFaceData(&data, &returnFaceData);
+	faceData.push_back(faceTestOne);
+	faceData.push_back(faceTestTwo);
+	faceData.push_back(faceTestThree);
 
-	cout << "Parsed Data: " << endl << endl;
+	vectorData.push_back(vectorTestOne);
+	vectorData.push_back(vectorTestTwo);
+	vectorData.push_back(vectorTestThree);
+
+	ParseFaceData(&faceData, &returnFaceData);
+	ParseVertexData(&vectorData, &returnVectorData);
+
+	cout << "Parsed Face Data: " << endl << endl;
 
 	for (int i = 0; i < returnFaceData.size(); i++)
 	{
@@ -137,5 +177,15 @@ void OBJParser::TestFunction()
 		}
 
 		cout << endl;
+	}
+
+	cout << endl << "Parsed Vector Data: " << endl << endl;
+
+	for (int i = 0; i < returnVectorData.size(); i++)
+	{
+		cout << "X: " << returnVectorData[i].x << " Y: " << returnVectorData[i].y <<
+			" Z: " << returnVectorData[i].z << " W: " << returnVectorData[i].w;
+
+		cout << endl << endl;
 	}
 }
