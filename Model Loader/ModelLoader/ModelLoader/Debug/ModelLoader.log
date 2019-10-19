@@ -1,12 +1,16 @@
-﻿  OBJParser.cpp
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(41,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(65,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(169,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(184,20): warning C4018:  '<': signed/unsigned mismatch
-  LINK : 0 new modules and 1 (out of 47) modules have changed since prior linking
+﻿  ModelLoader.cpp
+  OBJParser.cpp
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(46,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(68,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(92,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(198,20): warning C4018:  '<': signed/unsigned mismatch
+  Generating Code...
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(213,20): warning C4018:  '<': signed/unsigned mismatch
+  LINK : 0 new modules and 2 (out of 47) modules have changed since prior linking
   Generating non-SAFESEH image.
   Starting pass 2
        OBJParser.obj
+       ModelLoader.obj
        MSVCRTD.lib(loadcfg.obj)
   Finished pass 2
   ModelLoader.vcxproj -> D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\ModelLoader.exe

@@ -35,6 +35,33 @@ struct ModelData
 	vector<FaceRecord> faceVector;
 };
 
+void OBJParser::ParseOBJ(vector<string>* rawData, ModelData* parsedData)
+{
+	vector<FaceRecord> faceData;
+	vector<VertexRecord> vertexData;
+
+	vector<string> vertices;
+	vector<string> faces;
+
+	for (int i = 0; i < rawData->size(); i++)
+	{
+		if ((*rawData)[i].substr(0, 2).compare("f ") == 0)
+		{
+			faces.push_back((*rawData)[i]);
+		}
+		else if ((*rawData)[i].substr(0, 2).compare("v ") == 0)
+		{
+			vertices.push_back((*rawData)[i]);
+		}
+	}
+
+	ParseFaceData(&faces, &faceData);
+	ParseVertexData(&vertices, &vertexData);
+
+	parsedData->faceVector = faceData;
+	parsedData->vertexVector = vertexData;
+}
+
 void OBJParser::ParseFaceData(vector<string>* data, vector<FaceRecord>* returnFaceData)
 {
 	// For every string in the data, iterate, remove unneeded characters and add extracted data to an array
@@ -72,10 +99,12 @@ void OBJParser::ParseVertexData(vector<string>* data, vector<VertexRecord>* retu
 		RemoveLeadingCharacters(&dataString, 2);
 		RemoveWhiteSpace(dataString, &vertexData);
 
+		// All coordinate values stored as floats
 		vertexRecord.x = stof(vertexData[0]);
 		vertexRecord.y = stof(vertexData[1]);
 		vertexRecord.z = stof(vertexData[2]);
 
+		// Not all OBJ files contain W values, so set to 1 if they're not present
 		if (vertexData.size() < 3)
 		{
 			vertexRecord.w = stof(vertexData[3]);

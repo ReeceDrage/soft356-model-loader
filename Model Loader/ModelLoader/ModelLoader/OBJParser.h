@@ -18,5 +18,6 @@ private:
 	void ParseVertexData(vector<string>* data, vector<VertexRecord>* returnVertexData);
 
 public:
+	void ParseOBJ(vector<string>* rawData, ModelData* parsedData);
 	void TestFunction();
 };
