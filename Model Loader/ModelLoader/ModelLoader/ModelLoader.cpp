@@ -42,9 +42,31 @@ void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* ren
 	}
 }
 
+void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngle)
+{
+	// Vector to store modified vertex data
+	vector<glm::vec4> adjustedModel;
+
+	// Generate a rotation matrix to multiply each individual vector by
+	glm::mat4 rotationMatrix = glm::rotate(rotationAngle, rotationAxis);
+	glm::vec4 adjustedVector;
+
+	// For every vertex, multiply by the rotation matrix and then add the result to the new vector
+	for (int i = 0; i < model->size(); i++)
+	{
+		adjustedVector = rotationMatrix * (*model)[i];
+		adjustedModel.push_back(adjustedVector);
+	}
+
+	// replace the original vertex vector with the adjusted vertex vector
+	(*model) = adjustedModel;
+	adjustedModel.clear();
+}
+
 void Display(GLuint* vertexbuffer, int numberOfVertices)
 {
-	static const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	// Clear the buffer with black
+	const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	glClearBufferfv(GL_COLOR, 0, black);
 
 	// Bind buffer values
@@ -96,13 +118,16 @@ int main(int argc, char** argv)
 	glGenVertexArrays(1, &vertexArray);
 	glBindVertexArray(vertexArray);
 
-	GLuint vertexbuffer;
-	glGenBuffers(1, &vertexbuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * renderableModel.size(), &renderableModel[0], GL_STATIC_DRAW);
-
 	while (!glfwWindowShouldClose(window))
 	{
+		glm::vec3 rotationAxis(0, 1, 0);
+		Rotate(&renderableModel, rotationAxis, 0.005f);
+
+		GLuint vertexbuffer;
+		glGenBuffers(1, &vertexbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * renderableModel.size(), &renderableModel[0], GL_STATIC_DRAW);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		Display(&vertexbuffer, renderableModel.size());
