@@ -17,6 +17,7 @@
 
 // Include statements for external header files
 #include "OBJParser.h"
+#include "ShaderLoader.h"
 
 using namespace std;
 
@@ -100,8 +101,8 @@ void Display(GLuint* vertexbuffer, int numberOfVertices)
 
 int main(int argc, char** argv)
 {
+	// Load a model file
 	vector<string> rawData;
-
 	LoadFile(&rawData, "Resources/suzanne.obj");
 
 	OBJParser parser;
@@ -124,6 +125,8 @@ int main(int argc, char** argv)
 	glGenVertexArrays(1, &vertexArray);
 	glBindVertexArray(vertexArray);
 
+	GLuint program = LoadShaders("Resources/shader.vert", "Resources/shader.frag");
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glm::vec3 rotationAxis(0, 1, 0);
@@ -136,6 +139,7 @@ int main(int argc, char** argv)
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+		glUseProgram(program);
 		Display(&vertexbuffer, renderableModel.size());
 	}
 }
