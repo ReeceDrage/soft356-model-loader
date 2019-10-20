@@ -1,20 +1,6 @@
 ﻿  ModelLoader.cpp
-  OBJParser.cpp
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(16,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(38,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(62,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(168,20): warning C4018:  '<': signed/unsigned mismatch
-  Generating Code...
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(183,20): warning C4018:  '<': signed/unsigned mismatch
-  LINK : 0 new modules and 2 (out of 47) modules have changed since prior linking
-  Generating non-SAFESEH image.
-  LINK : padding exhausted (3): performing full link
-  
-  Invoking LINK.EXE:
-   /ERRORREPORT:PROMPT @C:\Users\reece\AppData\Local\Temp\tmp2d3610a431254e35b544db97cf96a8e5.rsp
-   /nologo
-   /incremental
-   /fullbuild
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(24,20): warning C4018:  '<': signed/unsigned mismatch
+  LINK : D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\ModelLoader.exe not found or not built by the last incremental link; performing full link
   
   Starting pass 1
   Processed /DEFAULTLIB:msvcprtd
@@ -269,6 +255,9 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > & (__cdecl*)(class std::basic_ostream<char,struct std::char_traits<char> > &))" (__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z)
           Referenced in OBJParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
+        Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(int)" (__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z)
+          Referenced in OBJParser.obj
+          Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(float)" (__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@M@Z)
           Referenced in OBJParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
@@ -282,6 +271,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
           Referenced in OBJParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found __IMPORT_DESCRIPTOR_MSVCP140D
+          Referenced in msvcprtd.lib(MSVCP140D.dll)
           Referenced in msvcprtd.lib(MSVCP140D.dll)
           Referenced in msvcprtd.lib(MSVCP140D.dll)
           Referenced in msvcprtd.lib(MSVCP140D.dll)
@@ -390,6 +380,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
           Referenced in MSVCRTD.lib(secchk.obj)
           Loaded MSVCRTD.lib(gs_cookie.obj)
         Found __fltused
+          Referenced in ModelLoader.obj
           Referenced in OBJParser.obj
           Loaded MSVCRTD.lib(fltused.obj)
         Found _mainCRTStartup
@@ -634,6 +625,9 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
         Found __imp__strtof
           Referenced in OBJParser.obj
           Loaded ucrtd.lib(ucrtbased.dll)
+        Found __imp__strtol
+          Referenced in OBJParser.obj
+          Loaded ucrtd.lib(ucrtbased.dll)
         Found _strlen
           Referenced in OBJParser.obj
           Loaded ucrtd.lib(ucrtbased.dll)
@@ -756,6 +750,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
           Referenced in MSVCRTD.lib(pdblkup.obj)
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __IMPORT_DESCRIPTOR_ucrtbased
+          Referenced in ucrtd.lib(ucrtbased.dll)
           Referenced in ucrtd.lib(ucrtbased.dll)
           Referenced in ucrtd.lib(ucrtbased.dll)
           Referenced in ucrtd.lib(ucrtbased.dll)
@@ -1014,26 +1009,26 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
    /v
    /x
    /fo
-   "C:\Users\reece\AppData\Local\Temp\lnk{4970B5B6-53F6-4080-8DDE-4D715D6AA5E4}.tmp"
-   "C:\Users\reece\AppData\Local\Temp\lnk{86FE7879-0273-43F9-B82C-29043FA80C0E}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{45298712-9B53-4788-B96D-0DB07EC2806B}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\reece\AppData\Local\Temp\lnk{4970B5B6-53F6-4080-8DDE-4D715D6AA5E4}.tmp
+  Creating C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\reece\AppData\Local\Temp\lnk{86FE7879-0273-43F9-B82C-29043FA80C0E}.tmp.
+  C:\Users\reece\AppData\Local\Temp\lnk{45298712-9B53-4788-B96D-0DB07EC2806B}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\reece\AppData\Local\Temp\lnk{B0F4B937-0109-49E6-AC20-97FE3076A92C}.tmp"
+   /out:"C:\Users\reece\AppData\Local\Temp\lnk{E885149F-0443-42A1-8AAD-E1F4FBA5DE01}.tmp"
    /readonly
-   "C:\Users\reece\AppData\Local\Temp\lnk{4970B5B6-53F6-4080-8DDE-4D715D6AA5E4}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.22.27905.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
@@ -1164,6 +1159,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
        msvcprtd.lib(MSVCP140D.dll)
        msvcprtd.lib(MSVCP140D.dll)
        msvcprtd.lib(MSVCP140D.dll)
+       msvcprtd.lib(MSVCP140D.dll)
        msvcprtd.lib(locale0_implib.obj)
        MSVCRTD.lib(gs_cookie.obj)
        MSVCRTD.lib(gs_report.obj)
@@ -1183,6 +1179,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
        MSVCRTD.lib(default_local_stdio_options.obj)
        MSVCRTD.lib(denormal_control.obj)
        MSVCRTD.lib(env_mode.obj)
+OBJParser.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'OBJParser.obj' or at 'D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\vc142.pdb'; linking object as if no debug info
        MSVCRTD.lib(file_mode.obj)
        MSVCRTD.lib(fltused.obj)
        MSVCRTD.lib(invalid_parameter_handler.obj)
@@ -1225,6 +1222,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\OBJParser.cpp(
        vcruntimed.lib(VCRUNTIME140D.dll)
        vcruntimed.lib(VCRUNTIME140D.dll)
        vcruntimed.lib(VCRUNTIME140D.dll)
+       ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
