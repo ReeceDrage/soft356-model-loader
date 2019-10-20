@@ -1,6 +1,13 @@
 ﻿  ModelLoader.cpp
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(24,20): warning C4018:  '<': signed/unsigned mismatch
-  LINK : D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\ModelLoader.exe not found or not built by the last incremental link; performing full link
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(26,20): warning C4018:  '<': signed/unsigned mismatch
+  LINK : 0 new modules and 1 (out of 47) modules have changed since prior linking
+  LINK : symbol '__real@3f800000' not defined by modified objects but referenced by non-modified objects; performing full link
+  
+  Invoking LINK.EXE:
+   /ERRORREPORT:PROMPT @C:\Users\reece\AppData\Local\Temp\tmp1886086732d1464b9137fb4e5671a3e4.rsp
+   /nologo
+   /incremental
+   /fullbuild
   
   Starting pass 1
   Processed /DEFAULTLIB:msvcprtd
@@ -18,7 +25,43 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
         Found __imp__glewInit@0
           Referenced in ModelLoader.obj
           Loaded glew32.lib(glew32.dll)
+        Found __imp____glewBindBuffer
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewBufferData
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewGenBuffers
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewDisableVertexAttribArray
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewEnableVertexAttribArray
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewVertexAttribPointer
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewClearBufferfv
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewBindVertexArray
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
+        Found __imp____glewGenVertexArrays
+          Referenced in ModelLoader.obj
+          Loaded glew32.lib(glew32.dll)
         Found __IMPORT_DESCRIPTOR_glew32
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
+          Referenced in glew32.lib(glew32.dll)
           Referenced in glew32.lib(glew32.dll)
           Loaded glew32.lib(glew32.dll)
         Found __NULL_IMPORT_DESCRIPTOR
@@ -343,6 +386,15 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
           Loaded msvcprtd.lib(MSVCP140D.dll)
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\glu32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\opengl32.lib:
+        Found __imp__glDrawArrays@12
+          Referenced in ModelLoader.obj
+          Loaded opengl32.lib(OPENGL32.dll)
+        Found __IMPORT_DESCRIPTOR_OPENGL32
+          Referenced in opengl32.lib(OPENGL32.dll)
+          Loaded opengl32.lib(OPENGL32.dll)
+        Found OPENGL32_NULL_THUNK_DATA
+          Referenced in opengl32.lib(OPENGL32.dll)
+          Loaded opengl32.lib(OPENGL32.dll)
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winmm.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\lib\x86\MSVCRTD.lib:
         Found "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z)
@@ -1009,26 +1061,26 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
    /v
    /x
    /fo
-   "C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp"
-   "C:\Users\reece\AppData\Local\Temp\lnk{45298712-9B53-4788-B96D-0DB07EC2806B}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{28A56D7F-C2B4-417C-926D-D948D354EC23}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{2DC033E2-FF58-4885-9AB5-7F3BE118E5AD}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp
+  Creating C:\Users\reece\AppData\Local\Temp\lnk{28A56D7F-C2B4-417C-926D-D948D354EC23}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\reece\AppData\Local\Temp\lnk{45298712-9B53-4788-B96D-0DB07EC2806B}.tmp.
+  C:\Users\reece\AppData\Local\Temp\lnk{2DC033E2-FF58-4885-9AB5-7F3BE118E5AD}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\reece\AppData\Local\Temp\lnk{E885149F-0443-42A1-8AAD-E1F4FBA5DE01}.tmp"
+   /out:"C:\Users\reece\AppData\Local\Temp\lnk{14D20D93-76F8-4CC3-870F-6CCF0B6AD69E}.tmp"
    /readonly
-   "C:\Users\reece\AppData\Local\Temp\lnk{BC235C51-EB73-4798-A2BC-2771A5C3CF81}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{28A56D7F-C2B4-417C-926D-D948D354EC23}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.22.27905.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
@@ -1049,7 +1101,6 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
     C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib
     C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib
     C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\glu32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\opengl32.lib
     C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winmm.lib
     C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\lib\x86\OLDNAMES.lib
   
@@ -1057,6 +1108,15 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
        * linker generated manifest res *
        OBJParser.obj
        ModelLoader.obj
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
+       glew32.lib(glew32.dll)
        glew32.lib(glew32.dll)
        glew32.lib(glew32.dll)
        glew32.lib(glew32.dll)
@@ -1161,6 +1221,9 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
        msvcprtd.lib(MSVCP140D.dll)
        msvcprtd.lib(MSVCP140D.dll)
        msvcprtd.lib(locale0_implib.obj)
+       opengl32.lib(OPENGL32.dll)
+       opengl32.lib(OPENGL32.dll)
+       opengl32.lib(OPENGL32.dll)
        MSVCRTD.lib(gs_cookie.obj)
        MSVCRTD.lib(gs_report.obj)
        MSVCRTD.lib(gs_support.obj)
@@ -1179,7 +1242,6 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
        MSVCRTD.lib(default_local_stdio_options.obj)
        MSVCRTD.lib(denormal_control.obj)
        MSVCRTD.lib(env_mode.obj)
-OBJParser.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'OBJParser.obj' or at 'D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\vc142.pdb'; linking object as if no debug info
        MSVCRTD.lib(file_mode.obj)
        MSVCRTD.lib(fltused.obj)
        MSVCRTD.lib(invalid_parameter_handler.obj)
