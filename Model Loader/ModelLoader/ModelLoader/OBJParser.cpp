@@ -126,9 +126,9 @@ void OBJParser::ExtractVertexData(string faceData, FaceRecordVertex* vertexRecor
 
 	// Convert returned strings into float values
 	SplitString(faceData, &returnedString, seperator);
-	(*vertexRecord).vertexIndex = stof(returnedString[0]);
-	(*vertexRecord).textureIndex = stof(returnedString[1]);
-	(*vertexRecord).normalIndex = stof(returnedString[2]);
+	(*vertexRecord).vertexIndex = stoi(returnedString[0]);
+	(*vertexRecord).textureIndex = stoi(returnedString[1]);
+	(*vertexRecord).normalIndex = stoi(returnedString[2]);
 }
 
 void OBJParser::RemoveLeadingCharacters(string* dataLine, int numberOfCharacters)
