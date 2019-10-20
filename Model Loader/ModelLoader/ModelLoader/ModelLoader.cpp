@@ -20,6 +20,24 @@
 
 using namespace std;
 
+void LoadFile(vector<string>* data, string fileName)
+{
+	// Create input stream
+	string line;
+	ifstream myFile(fileName);
+
+	// If the file is open, retrieve lines from the input stream
+	if (myFile.is_open())
+	{
+		while (getline(myFile, line))
+		{
+			data->push_back(line);
+		}
+
+		myFile.close();
+	}
+}
+
 void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* renderableModel)
 {
 	// Generate vector data for rendering
@@ -82,21 +100,9 @@ void Display(GLuint* vertexbuffer, int numberOfVertices)
 
 int main(int argc, char** argv)
 {
-	// Create input stream
-	string line;
 	vector<string> rawData;
 
-	ifstream myFile("Resources/suzanne.obj");
-
-	if (myFile.is_open())
-	{
-		while (getline(myFile, line))
-		{
-			rawData.push_back(line);
-		}
-
-		myFile.close();
-	}
+	LoadFile(&rawData, "Resources/suzanne.obj");
 
 	OBJParser parser;
 	ModelData modelData;
