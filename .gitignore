@@ -32,5 +32,4 @@
 *.app
 Model Loader/ModelLoader/.vs/ModelLoader/v16/Browse.VC.db
 Model Loader/ModelLoader/.vs/ModelLoader/v16/Browse.VC.opendb
-Model Loader/ModelLoader/.vs/ModelLoader/v16/ipch/AutoPCH/b2ca1405604d3bf0/MODELLOADER.ipch
-Model Loader/ModelLoader/.vs/ModelLoader/v16/ipch/AutoPCH/b2ca1405604d3bf0/MODELLOADER.ipch
+*.ipch
