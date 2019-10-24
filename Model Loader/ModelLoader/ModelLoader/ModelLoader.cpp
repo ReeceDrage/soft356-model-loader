@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <conio.h>
 
 // Nupengl include statements for OpenGL rendering
 #include "GL/glew.h"
@@ -175,7 +176,11 @@ int main(int argc, char** argv)
 	GLuint vertexbuffer;
 	GLuint colourbuffer;
 
-	while (!glfwWindowShouldClose(window))
+	// Do while loop can be exited by user input
+	cout << endl << "Model Loaded. Press Q to quit." << endl;
+	bool isActive = true;
+
+	do
 	{
 		// Generate a rotation matrix and rotate every vertex
 		glm::vec3 rotationAxis(0, 1, 0);
@@ -194,5 +199,19 @@ int main(int argc, char** argv)
 		glfwPollEvents();
 		glUseProgram(program);
 		Display(&vertexbuffer, &colourbuffer, renderableModel.size());
-	}
+
+		// If a key is pressed, check if it's Q. If it is, close the render.
+		char keypressed;
+		while (_kbhit())
+		{
+			keypressed = _getch();
+
+			if (keypressed == 'Q' || keypressed == 'q')
+			{
+				isActive = false;
+				break;
+			}
+		}
+	} 
+	while (!(glfwWindowShouldClose(window)) && isActive);
 }
