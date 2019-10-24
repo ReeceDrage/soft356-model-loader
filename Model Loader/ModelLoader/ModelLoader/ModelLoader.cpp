@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <conio.h>
+#include <locale>
 
 // Nupengl include statements for OpenGL rendering
 #include "GL/glew.h"
@@ -123,9 +124,10 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 	glDisableVertexAttribArray(0);
 }
 
-void LoadAndParseModel(ModelData* modelData)
+void LoadAndParseModel(vector<glm::vec4> *renderableModel, vector<glm::vec4> *colourVector)
 {
 	vector<string> rawData;
+	ModelData modelData;
 	OBJParser parser;
 	bool parsingSuccessful;
 
@@ -140,28 +142,28 @@ void LoadAndParseModel(ModelData* modelData)
 
 		// Clear any already loaded data
 		rawData.clear();
+		renderableModel->clear();
+		colourVector->clear();
 
 		// Load a model file
 		LoadFile(&rawData, inputString);
 
 		// Parse the loaded file into readable model data
-		parsingSuccessful = parser.ParseOBJ(&rawData, modelData);
+		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
 	} 
 	while (!parsingSuccessful);
+
+	// Produce final renderable vector arrays for OpenGL to process
+	ProduceRenderableModel(&modelData, renderableModel);
+	GenerateRandomValues(colourVector, renderableModel->size());
 }
 
 int main(int argc, char** argv)
 {
-	ModelData modelData;
 	vector<glm::vec4> renderableModel;
 	vector<glm::vec4> colourVector;
 
-	LoadAndParseModel(&modelData);
-
-	// Produce vector data, ready for rendering
-	ProduceRenderableModel(&modelData, &renderableModel);
-
-	GenerateRandomValues(&colourVector, renderableModel.size());
+	LoadAndParseModel(&renderableModel, &colourVector);
 
 	// Initialise GLFW and GLEW
 	glfwInit();
@@ -207,15 +209,30 @@ int main(int argc, char** argv)
 		glUseProgram(program);
 		Display(&vertexbuffer, &colourbuffer, renderableModel.size());
 
-		// If a key is pressed, check if it's Q. If it is, close the render.
-		char keypressed;
+		// If a key is pressed, pause rendering and allow the user it enter a full line
 		while (_kbhit())
 		{
-			keypressed = _getch();
+			string userInput;
+			string capitalisedInput;
 
-			if (keypressed == 'Q' || keypressed == 'q')
+			// Take user input
+			cin >> userInput;
+
+			// Capitalise the input to remove case sensitivity
+			for (int i = 0; i < userInput.length(); i++)
+			{
+				capitalisedInput.push_back(toupper(userInput[i]));
+			}
+
+			if (capitalisedInput == "QUIT")
 			{
 				isActive = false;
+				break;
+			}
+
+			if (capitalisedInput == "LOAD")
+			{
+				LoadAndParseModel(&renderableModel, &colourVector);
 				break;
 			}
 		}

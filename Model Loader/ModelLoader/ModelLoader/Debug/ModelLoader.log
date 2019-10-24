@@ -1,6 +1,7 @@
 ﻿  ModelLoader.cpp
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(46,20): warning C4018:  '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(95,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(47,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(96,20): warning C4018:  '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cpp(222,22): warning C4018:  '<': signed/unsigned mismatch
   LINK : 0 new modules and 1 (out of 48) modules have changed since prior linking
   Generating non-SAFESEH image.
   Starting pass 2
