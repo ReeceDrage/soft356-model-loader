@@ -121,21 +121,16 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 	// Draw arrays to the window
 	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Starting from vertex 0; 3 vertices total -> 1 triangle
 	glDisableVertexAttribArray(0);
-
 }
 
-int main(int argc, char** argv)
+void LoadAndParseModel(ModelData* modelData)
 {
 	vector<string> rawData;
 	OBJParser parser;
-	ModelData modelData;
-	vector<glm::vec4> renderableModel;
-	vector<glm::vec4> colourVector;
-
 	bool parsingSuccessful;
 
 	// Attempt loading until a valid model is loaded
-	do 
+	do
 	{
 		// Request that the user specifies a model location
 		string inputString;
@@ -143,13 +138,25 @@ int main(int argc, char** argv)
 		cin >> inputString;
 		cout << endl;
 
+		// Clear any already loaded data
+		rawData.clear();
+
 		// Load a model file
 		LoadFile(&rawData, inputString);
 
 		// Parse the loaded file into readable model data
-		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
+		parsingSuccessful = parser.ParseOBJ(&rawData, modelData);
 	} 
 	while (!parsingSuccessful);
+}
+
+int main(int argc, char** argv)
+{
+	ModelData modelData;
+	vector<glm::vec4> renderableModel;
+	vector<glm::vec4> colourVector;
+
+	LoadAndParseModel(&modelData);
 
 	// Produce vector data, ready for rendering
 	ProduceRenderableModel(&modelData, &renderableModel);

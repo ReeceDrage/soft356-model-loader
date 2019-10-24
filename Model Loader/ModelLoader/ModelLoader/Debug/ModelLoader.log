@@ -4,7 +4,9 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader\ModelLoader.cp
   LINK : 0 new modules and 1 (out of 48) modules have changed since prior linking
   Generating non-SAFESEH image.
   Starting pass 2
+       ShaderLoader.obj
        ModelLoader.obj
        MSVCRTD.lib(loadcfg.obj)
+       MSVCRTD.lib(throw_bad_alloc.obj)
   Finished pass 2
   ModelLoader.vcxproj -> D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\Debug\ModelLoader.exe
