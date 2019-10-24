@@ -61,6 +61,26 @@ void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* ren
 	}
 }
 
+void GenerateRandomValues(vector<glm::vec4>* outputVector, int numberToGenerate)
+{
+	vector<glm::vec4> generatedVector;
+
+	for (int i = 0; i < numberToGenerate; i++)
+	{
+		glm::vec4 colourVec;
+
+		colourVec.x = (float) (rand() % 10) / 10;
+		colourVec.y = (float) (rand() % 10) / 10;
+		colourVec.z = (float) (rand() % 10) / 10;
+		colourVec.w = (float) (rand() % 10) / 10;
+
+		generatedVector.push_back(colourVec);
+	}
+
+	(*outputVector) = generatedVector;
+	generatedVector.clear();
+}
+
 void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngle)
 {
 	// Vector to store modified vertex data
@@ -82,16 +102,19 @@ void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngl
 	adjustedModel.clear();
 }
 
-void Display(GLuint* vertexbuffer, int numberOfVertices)
+void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 {
-	// Clear the buffer with black
-	const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	glClearBufferfv(GL_COLOR, 0, black);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Bind buffer values
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, (*vertexbuffer));
+	glBindBuffer(GL_ARRAY_BUFFER, (*vertexBuffer));
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, (void*) 0);
+
+	// Bind buffer values
+	glEnableVertexAttribArray(1);
+	glBindBuffer(GL_ARRAY_BUFFER, (*colourBuffer));
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
 	// Draw arrays to the window
 	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Starting from vertex 0; 3 vertices total -> 1 triangle
@@ -101,19 +124,27 @@ void Display(GLuint* vertexbuffer, int numberOfVertices)
 
 int main(int argc, char** argv)
 {
+	// Request that the user specifies a model location
+	string inputString;
+	cout << "Please specify a model file location" << endl;
+	cin >> inputString;
+
 	// Load a model file
 	vector<string> rawData;
-	LoadFile(&rawData, "Resources/suzanne.obj");
+	LoadFile(&rawData, inputString);
 
 	OBJParser parser;
 	ModelData modelData;
 	vector<glm::vec4> renderableModel;
+	vector<glm::vec4> colourVector;
 
 	// Parse the loaded file into readable model data
 	parser.ParseOBJ(&rawData, &modelData);
 
 	// Produce vector data, ready for rendering
 	ProduceRenderableModel(&modelData, &renderableModel);
+
+	GenerateRandomValues(&colourVector, renderableModel.size());
 
 	// Initialise GLFW and GLEW
 	glfwInit();
@@ -125,21 +156,32 @@ int main(int argc, char** argv)
 	glGenVertexArrays(1, &vertexArray);
 	glBindVertexArray(vertexArray);
 
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+
 	GLuint program = LoadShaders("Resources/shader.vert", "Resources/shader.frag");
+
+	GLuint vertexbuffer;
+	GLuint colourbuffer;
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glm::vec3 rotationAxis(0, 1, 0);
 		Rotate(&renderableModel, rotationAxis, 0.005f);
 
-		GLuint vertexbuffer;
 		glGenBuffers(1, &vertexbuffer);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * renderableModel.size(), &renderableModel[0], GL_STATIC_DRAW);
 
+		glGenBuffers(1, &colourbuffer);
+		glBindBuffer(GL_ARRAY_BUFFER, colourbuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * colourVector.size(), &colourVector[0], GL_STATIC_DRAW);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		glUseProgram(program);
-		Display(&vertexbuffer, renderableModel.size());
+		Display(&vertexbuffer, &colourbuffer, renderableModel.size());
 	}
 }
