@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void OBJParser::ParseOBJ(vector<string>* rawData, ModelData* parsedData)
+bool OBJParser::ParseOBJ(vector<string>* rawData, ModelData* parsedData)
 {
 	vector<FaceRecord> faceData;
 	vector<VertexRecord> vertexData;
@@ -25,11 +25,21 @@ void OBJParser::ParseOBJ(vector<string>* rawData, ModelData* parsedData)
 		}
 	}
 
-	ParseFaceData(&faces, &faceData);
-	ParseVertexData(&vertices, &vertexData);
+	try
+	{
+		ParseFaceData(&faces, &faceData);
+		ParseVertexData(&vertices, &vertexData);
 
-	parsedData->faceVector = faceData;
-	parsedData->vertexVector = vertexData;
+		parsedData->faceVector = faceData;
+		parsedData->vertexVector = vertexData;
+	}
+	catch (const exception e)
+	{
+		cout << "OBJ Parsing Failed." << endl;
+		return false;
+	}
+
+	return true;
 }
 
 void OBJParser::ParseFaceData(vector<string>* data, vector<FaceRecord>* returnFaceData)

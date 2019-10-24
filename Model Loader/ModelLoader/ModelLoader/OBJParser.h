@@ -41,6 +41,6 @@ private:
 	void ParseVertexData(std::vector<std::string>* data, std::vector<VertexRecord>* returnVertexData);
 
 public:
-	void ParseOBJ(std::vector<std::string>* rawData, ModelData* parsedData);
+	bool ParseOBJ(std::vector<std::string>* rawData, ModelData* parsedData);
 	void TestFunction();
 };

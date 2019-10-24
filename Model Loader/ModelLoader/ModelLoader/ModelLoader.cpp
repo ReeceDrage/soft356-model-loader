@@ -125,22 +125,30 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 
 int main(int argc, char** argv)
 {
-	// Request that the user specifies a model location
-	string inputString;
-	cout << "Please specify a model file location" << endl;
-	cin >> inputString;
-
-	// Load a model file
 	vector<string> rawData;
-	LoadFile(&rawData, inputString);
-
 	OBJParser parser;
 	ModelData modelData;
 	vector<glm::vec4> renderableModel;
 	vector<glm::vec4> colourVector;
 
-	// Parse the loaded file into readable model data
-	parser.ParseOBJ(&rawData, &modelData);
+	bool parsingSuccessful;
+
+	// Attempt loading until a valid model is loaded
+	do 
+	{
+		// Request that the user specifies a model location
+		string inputString;
+		cout << "Please specify a model file location" << endl;
+		cin >> inputString;
+		cout << endl;
+
+		// Load a model file
+		LoadFile(&rawData, inputString);
+
+		// Parse the loaded file into readable model data
+		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
+	} 
+	while (!parsingSuccessful);
 
 	// Produce vector data, ready for rendering
 	ProduceRenderableModel(&modelData, &renderableModel);
