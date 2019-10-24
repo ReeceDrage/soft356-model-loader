@@ -69,10 +69,10 @@ void GenerateRandomValues(vector<glm::vec4>* outputVector, int numberToGenerate)
 	{
 		glm::vec4 colourVec;
 
-		colourVec.x = (float) (rand() % 10) / 10;
-		colourVec.y = (float) (rand() % 10) / 10;
-		colourVec.z = (float) (rand() % 10) / 10;
-		colourVec.w = (float) (rand() % 10) / 10;
+		colourVec.x = (float) (rand() % 10) / 10;	// Red
+		colourVec.y = (float) (rand() % 10) / 10;	// Green
+		colourVec.z = (float) (rand() % 10) / 10;	// Blue
+		colourVec.w = (float) (rand() % 10) / 10;	// Alpha
 
 		generatedVector.push_back(colourVec);
 	}
@@ -104,6 +104,7 @@ void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngl
 
 void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 {
+	// Clear using depth buffer to ensure edges are rendered correctly along the Z axis
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Bind buffer values
@@ -148,7 +149,7 @@ int main(int argc, char** argv)
 
 	// Initialise GLFW and GLEW
 	glfwInit();
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Render Window", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "Render Window", NULL, NULL);
 	glfwMakeContextCurrent(window);
 	glewInit();
 
@@ -168,9 +169,11 @@ int main(int argc, char** argv)
 
 	while (!glfwWindowShouldClose(window))
 	{
+		// Generate a rotation matrix and rotate every vertex
 		glm::vec3 rotationAxis(0, 1, 0);
 		Rotate(&renderableModel, rotationAxis, 0.005f);
 
+		// Re-generate, re-bind and re-fill buffers with new vertex data 
 		glGenBuffers(1, &vertexbuffer);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * renderableModel.size(), &renderableModel[0], GL_STATIC_DRAW);
