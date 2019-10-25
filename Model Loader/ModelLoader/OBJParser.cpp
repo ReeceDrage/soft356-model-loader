@@ -9,3 +9,23 @@
 
 // Include statements for external header files
 #include "OBJParser.h"
+
+using namespace std;
+using namespace glm;
+
+int OBJParser::CalculateNumberOfLeadingCharacters(string data)
+{
+	// Create a stream from 2 characters in to the end of the string (Excluding "v ", "vn" etc.)
+	stringstream stream(data.substr(2, data.length()));
+	string section;
+	int counter = 0;
+
+	// Count the blank spaces
+	while (stream.get() == ' ')
+	{
+		counter++;
+	}
+
+	// Return the number of blank spaces plus the leading 2 characters
+	return counter + 2;
+}

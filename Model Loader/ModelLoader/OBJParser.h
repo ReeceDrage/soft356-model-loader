@@ -16,7 +16,8 @@ class OBJParser
 {
 private:
 
-	void RemoveLeadingCharacters(std::string* data);
+	int CalculateNumberOfLeadingCharacters(std::string data);
+	void RemoveLeadingCharacters(std::string* data, int numberOfCharacters);
 	void StringSplit(std::string data, std::vector<std::string>* returnedString, char delimiter);
 
 	bool ParseVertex(std::string* data, glm::vec4* vertex);

@@ -41,27 +41,27 @@ void LoadFile(vector<string>* data, string fileName)
 	}
 }
 
-void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* renderableModel)
-{
-	// Generate vector data for rendering
-	for (int i = 0; i < loadedModel->faceVector.size(); i++)
-	{
-		glm::vec4 vector;
-
-		// Iterate through every face record and retrieve the corresponding vertices
-		for (int j = 0; j < 3; j++)
-		{
-			int index = loadedModel->faceVector[i].vertexArray[j].vertexIndex - 1;
-
-			vector.x = loadedModel->vertexVector[index].x;
-			vector.y = loadedModel->vertexVector[index].y;
-			vector.z = loadedModel->vertexVector[index].z;
-			vector.w = loadedModel->vertexVector[index].w;
-
-			renderableModel->push_back(vector);
-		}
-	}
-}
+//void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* renderableModel)
+//{
+//	// Generate vector data for rendering
+//	for (int i = 0; i < loadedModel->faceVector.size(); i++)
+//	{
+//		glm::vec4 vector;
+//
+//		// Iterate through every face record and retrieve the corresponding vertices
+//		for (int j = 0; j < 3; j++)
+//		{
+//			int index = loadedModel->faceVector[i].vertexArray[j].vertexIndex - 1;
+//
+//			vector.x = loadedModel->vertexVector[index].x;
+//			vector.y = loadedModel->vertexVector[index].y;
+//			vector.z = loadedModel->vertexVector[index].z;
+//			vector.w = loadedModel->vertexVector[index].w;
+//
+//			renderableModel->push_back(vector);
+//		}
+//	}
+//}
 
 void GenerateRandomValues(vector<glm::vec4>* outputVector, int numberToGenerate)
 {
@@ -124,46 +124,46 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 	glDisableVertexAttribArray(0);
 }
 
-void LoadAndParseModel(vector<glm::vec4> *renderableModel, vector<glm::vec4> *colourVector)
-{
-	vector<string> rawData;
-	ModelData modelData;
-	OBJParser parser;
-	bool parsingSuccessful;
-
-	// Attempt loading until a valid model is loaded
-	do
-	{
-		// Request that the user specifies a model location
-		string inputString;
-		cout << "Please specify a model file location" << endl;
-		cin >> inputString;
-		cout << endl;
-
-		// Clear any already loaded data
-		rawData.clear();
-		renderableModel->clear();
-		colourVector->clear();
-
-		// Load a model file
-		LoadFile(&rawData, inputString);
-
-		// Parse the loaded file into readable model data
-		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
-	} 
-	while (!parsingSuccessful);
-
-	// Produce final renderable vector arrays for OpenGL to process
-	ProduceRenderableModel(&modelData, renderableModel);
-	GenerateRandomValues(colourVector, renderableModel->size());
-}
+//void LoadAndParseModel(vector<glm::vec4> *renderableModel, vector<glm::vec4> *colourVector)
+//{
+//	vector<string> rawData;
+//	ModelData modelData;
+//	OBJParser parser;
+//	bool parsingSuccessful;
+//
+//	// Attempt loading until a valid model is loaded
+//	do
+//	{
+//		// Request that the user specifies a model location
+//		string inputString;
+//		cout << "Please specify a model file location" << endl;
+//		cin >> inputString;
+//		cout << endl;
+//
+//		// Clear any already loaded data
+//		rawData.clear();
+//		renderableModel->clear();
+//		colourVector->clear();
+//
+//		// Load a model file
+//		LoadFile(&rawData, inputString);
+//
+//		// Parse the loaded file into readable model data
+//		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
+//	} 
+//	while (!parsingSuccessful);
+//
+//	// Produce final renderable vector arrays for OpenGL to process
+//	ProduceRenderableModel(&modelData, renderableModel);
+//	GenerateRandomValues(colourVector, renderableModel->size());
+//}
 
 int main(int argc, char** argv)
 {
 	vector<glm::vec4> renderableModel;
 	vector<glm::vec4> colourVector;
 
-	LoadAndParseModel(&renderableModel, &colourVector);
+	//LoadAndParseModel(&renderableModel, &colourVector);
 
 	// Initialise GLFW and GLEW
 	glfwInit();
@@ -232,7 +232,7 @@ int main(int argc, char** argv)
 
 			if (capitalisedInput == "LOAD")
 			{
-				LoadAndParseModel(&renderableModel, &colourVector);
+				//LoadAndParseModel(&renderableModel, &colourVector);
 				break;
 			}
 		}
