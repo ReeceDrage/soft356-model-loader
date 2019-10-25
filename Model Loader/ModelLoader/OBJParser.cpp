@@ -13,6 +13,53 @@
 using namespace std;
 using namespace glm;
 
+bool OBJParser::ParseOBJ(vector<string> rawData, vector<vec4>* vertices, vector<vec2>* textures, vector<vec4>* normals)
+{
+	bool parsingSuccessful = true;
+	vector<FaceRecord> tempFaces;
+	vector<vec4> tempVertices;
+
+	for (int i = 0; i < rawData.size(); i++)
+	{
+		// If parsing fails at any point, stop parsing
+		if (parsingSuccessful)
+		{
+			if (rawData[i].substr(0, 2).compare("f ") == 0)
+			{
+				FaceRecord face;
+				parsingSuccessful = ParseFaceData(rawData[i], &face);
+				tempFaces.push_back(face);
+			}
+			else if (rawData[i].substr(0, 2).compare("v ") == 0)
+			{
+				vec4 vertex;
+				parsingSuccessful = ParseVertex(rawData[i], &vertex);
+				tempVertices.push_back(vertex);
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	cout << "Data parsing successful." << endl;
+
+	// Calculate exact vertices need from face data
+	for (int i = 0; i < tempFaces.size(); i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			int index = tempFaces[i].vertexArray[j].vertexIndex - 1;
+			vertices->push_back(tempVertices[index]);
+		}
+	}
+
+	cout << "Vertex calculation successful." << endl;
+
+	return true;
+}
+
 bool OBJParser::ParseVertex(string data, vec4* vertex)
 {
 	vector<string> splitString;
@@ -41,11 +88,9 @@ bool OBJParser::ParseVertex(string data, vec4* vertex)
 	}
 	catch (exception e)
 	{
-		cout << "Vertex parsing failed" << endl;
 		return false;
 	}
 
-	cout << "Vertex parsing successful" << endl;
 	return true;
 }
 
@@ -76,11 +121,9 @@ bool OBJParser::ParseFaceData(string data, FaceRecord* face)
 	}
 	catch (exception e)
 	{
-		cout << "Face parsing failed" << endl;
 		return false;
 	}
 
-	cout << "Face parsing successful" << endl;
 	return true;
 }
 

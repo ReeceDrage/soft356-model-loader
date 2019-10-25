@@ -25,5 +25,5 @@ private:
 
 public:
 
-	void ParseOBJ(std::vector<std::string> rawData, std::vector<glm::vec4>* vertices, std::vector<glm::vec2>* textures, std::vector<glm::vec4>* normals);
+	bool ParseOBJ(std::vector<std::string> rawData, std::vector<glm::vec4>* vertices, std::vector<glm::vec2>* textures, std::vector<glm::vec4>* normals);
 };
