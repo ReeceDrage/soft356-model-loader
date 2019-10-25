@@ -15,7 +15,8 @@
 // Include statements for the glm maths library
 #include "glm/glm.hpp"
 #include "glm/gtx/transform.hpp"
-#include <glm/gtc/matrix_transform.hpp>
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 // Include statements for external header files
 #include "OBJParser.h"
@@ -76,25 +77,17 @@ void GenerateColourBuffer(GLuint* colourBuffer, vector<vec4> colourVector)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * colourVector.size(), &colourVector[0], GL_STATIC_DRAW);
 }
 
-void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngle)
+void Rotate(GLuint program, glm::vec3 rotationAxis, float rotationAngle)
 {
-	// Vector to store modified vertex data
-	vector<glm::vec4> adjustedModel;
-
 	// Generate a rotation matrix to multiply each individual vector by
 	glm::mat4 rotationMatrix = glm::rotate(rotationAngle, rotationAxis);
-	glm::vec4 adjustedVector;
 
-	// For every vertex, multiply by the rotation matrix and then add the result to the new vector
-	for (int i = 0; i < model->size(); i++)
+	GLint matrixLocation = glGetUniformLocation(program, "rotationMatrix");
+
+	if (matrixLocation != -1)
 	{
-		adjustedVector = rotationMatrix * (*model)[i];
-		adjustedModel.push_back(adjustedVector);
+		glUniformMatrix4fv(matrixLocation, 1, GL_FALSE, glm::value_ptr(rotationMatrix));
 	}
-
-	// replace the original vertex vector with the adjusted vertex vector
-	(*model) = adjustedModel;
-	adjustedModel.clear();
 }
 
 void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
@@ -115,6 +108,7 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 	// Draw arrays to the window
 	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Starting from vertex 0; 3 vertices total -> 1 triangle
 	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
 }
 
 void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<vec4> *normals, vector<vec4> *colourVector)
@@ -189,16 +183,20 @@ int main(int argc, char** argv)
 	cout << endl << "Model Loaded. Press Q to quit." << endl;
 	bool isActive = true;
 
+	float rotationValue = 0.005f;
+
 	do
 	{
 		// Generate a rotation matrix and rotate every vertex
 		glm::vec3 rotationAxis(0, 1, 0);
-		Rotate(&vertices, rotationAxis, 0.005f);
+		Rotate(program, rotationAxis, rotationValue);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		glUseProgram(program);
 		Display(&vertexBuffer, &colourBuffer, vertices.size());
+
+		rotationValue += 0.01f;
 
 		// If a key is pressed, pause rendering and allow the user it enter a full line
 		while (_kbhit())
