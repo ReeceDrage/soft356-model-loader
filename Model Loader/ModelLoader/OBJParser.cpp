@@ -13,6 +13,41 @@
 using namespace std;
 using namespace glm;
 
+bool OBJParser::ParseVertex(string data, vec4* vertex)
+{
+	vector<string> splitString;
+
+	// Remove the first x characters and then split the string by " "
+	int charactersToRemove = CalculateNumberOfLeadingCharacters(data);
+	RemoveLeadingCharacters(&data, charactersToRemove);
+	StringSplit(data, &splitString, ' ');
+
+	try
+	{
+		// All coordinate values stored as floats
+		vertex->x = stof(splitString[0]);
+		vertex->y = stof(splitString[1]);
+		vertex->z = stof(splitString[2]);
+
+		// Not all OBJ files contain W values, so set to 1 if they're not present
+		if (splitString.size() < 3)
+		{
+			vertex->w = stof(splitString[3]);
+		}
+		else
+		{
+			vertex->w = 1;
+		}
+	}
+	catch (exception e)
+	{
+		cout << "Vertex parsing failed" << endl;
+		return false;
+	}
+
+	return true;
+}
+
 void OBJParser::StringSplit(string data, vector<string>* returnedString, char delimiter)
 {
 	// Create a string stream using the input string
