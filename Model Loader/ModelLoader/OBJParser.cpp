@@ -13,6 +13,12 @@
 using namespace std;
 using namespace glm;
 
+void OBJParser::RemoveLeadingCharacters(string* data, int numberOfCharacters)
+{
+	// Remove leading characters and return a string containing data
+	(*data) = data->substr(numberOfCharacters, data->length());
+}
+
 int OBJParser::CalculateNumberOfLeadingCharacters(string data)
 {
 	// Create a stream from 2 characters in to the end of the string (Excluding "v ", "vn" etc.)
