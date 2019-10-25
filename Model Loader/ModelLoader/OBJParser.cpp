@@ -45,6 +45,42 @@ bool OBJParser::ParseVertex(string data, vec4* vertex)
 		return false;
 	}
 
+	cout << "Vertex parsing successful" << endl;
+	return true;
+}
+
+bool OBJParser::ParseFaceData(string data, FaceRecord* face)
+{
+	vector<string> splitString;
+	FaceRecordVertex faceRecordVertex;
+
+	// Remove the first x characters and then split the string by " "
+	int charactersToRemove = CalculateNumberOfLeadingCharacters(data);
+	RemoveLeadingCharacters(&data, charactersToRemove);
+	StringSplit(data, &splitString, ' ');
+
+	try
+	{
+		// For every record in splitString, split by '/' and convert into integers
+		for (int i = 0; i < splitString.size(); i++)
+		{
+			vector<string> splitFace;
+			StringSplit(splitString[i], &splitFace, '/');
+
+			faceRecordVertex.vertexIndex = stoi(splitFace[0]);
+			faceRecordVertex.textureIndex = stoi(splitFace[1]);
+			faceRecordVertex.normalIndex = stoi(splitFace[2]);
+
+			face->vertexArray[i] = faceRecordVertex;
+		}
+	}
+	catch (exception e)
+	{
+		cout << "Face parsing failed" << endl;
+		return false;
+	}
+
+	cout << "Face parsing successful" << endl;
 	return true;
 }
 
