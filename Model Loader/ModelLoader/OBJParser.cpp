@@ -55,7 +55,7 @@ bool OBJParser::ParseOBJ(vector<string> rawData, vector<vec4>* vertices, vector<
 		}
 	}
 
-	cout << "Vertex calculation successful." << endl;
+	cout << "Vertex calculation successful." << endl << endl;
 
 	return true;
 }

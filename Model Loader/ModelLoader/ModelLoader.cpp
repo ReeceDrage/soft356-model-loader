@@ -22,11 +22,10 @@
 #include "ShaderLoader.h"
 
 using namespace std;
+using namespace glm;
 
 void LoadFile(vector<string>* data, string fileName)
 {
-	OBJParser parser;
-
 	// Create input stream
 	string line;
 	ifstream myFile(fileName);
@@ -42,28 +41,6 @@ void LoadFile(vector<string>* data, string fileName)
 		myFile.close();
 	}
 }
-
-//void ProduceRenderableModel(const ModelData* loadedModel, vector<glm::vec4>* renderableModel)
-//{
-//	// Generate vector data for rendering
-//	for (int i = 0; i < loadedModel->faceVector.size(); i++)
-//	{
-//		glm::vec4 vector;
-//
-//		// Iterate through every face record and retrieve the corresponding vertices
-//		for (int j = 0; j < 3; j++)
-//		{
-//			int index = loadedModel->faceVector[i].vertexArray[j].vertexIndex - 1;
-//
-//			vector.x = loadedModel->vertexVector[index].x;
-//			vector.y = loadedModel->vertexVector[index].y;
-//			vector.z = loadedModel->vertexVector[index].z;
-//			vector.w = loadedModel->vertexVector[index].w;
-//
-//			renderableModel->push_back(vector);
-//		}
-//	}
-//}
 
 void GenerateRandomValues(vector<glm::vec4>* outputVector, int numberToGenerate)
 {
@@ -83,6 +60,20 @@ void GenerateRandomValues(vector<glm::vec4>* outputVector, int numberToGenerate)
 
 	(*outputVector) = generatedVector;
 	generatedVector.clear();
+}
+
+void GenerateVertexBuffer(GLuint *vertexBuffer, vector<vec4> vertices)
+{
+	glGenBuffers(1, vertexBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, (*vertexBuffer));
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+}
+
+void GenerateColourBuffer(GLuint* colourBuffer, vector<vec4> colourVector)
+{
+	glGenBuffers(1, colourBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, (*colourBuffer));
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * colourVector.size(), &colourVector[0], GL_STATIC_DRAW);
 }
 
 void Rotate(vector<glm::vec4>* model, glm::vec3 rotationAxis, float rotationAngle)
@@ -126,46 +117,48 @@ void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
 	glDisableVertexAttribArray(0);
 }
 
-//void LoadAndParseModel(vector<glm::vec4> *renderableModel, vector<glm::vec4> *colourVector)
-//{
-//	vector<string> rawData;
-//	ModelData modelData;
-//	OBJParser parser;
-//	bool parsingSuccessful;
-//
-//	// Attempt loading until a valid model is loaded
-//	do
-//	{
-//		// Request that the user specifies a model location
-//		string inputString;
-//		cout << "Please specify a model file location" << endl;
-//		cin >> inputString;
-//		cout << endl;
-//
-//		// Clear any already loaded data
-//		rawData.clear();
-//		renderableModel->clear();
-//		colourVector->clear();
-//
-//		// Load a model file
-//		LoadFile(&rawData, inputString);
-//
-//		// Parse the loaded file into readable model data
-//		parsingSuccessful = parser.ParseOBJ(&rawData, &modelData);
-//	} 
-//	while (!parsingSuccessful);
-//
-//	// Produce final renderable vector arrays for OpenGL to process
-//	ProduceRenderableModel(&modelData, renderableModel);
-//	GenerateRandomValues(colourVector, renderableModel->size());
-//}
+void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<vec4> *normals, vector<vec4> *colourVector)
+{
+	vector<string> rawData;
+	OBJParser parser;
+	bool parsingSuccessful;
+
+	// Attempt loading until a valid model is loaded
+	do
+	{
+		// Request that the user specifies a model location
+		string inputString;
+		cout << "Please specify a model file location" << endl;
+		cin >> inputString;
+		cout << endl;
+
+		// Clear any already loaded data
+		rawData.clear();
+		vertices->clear();
+		textures->clear();
+		normals->clear();
+		colourVector->clear();
+
+		// Load a model file
+		LoadFile(&rawData, inputString);
+
+		// Parse the loaded file into readable model data
+		parsingSuccessful = parser.ParseOBJ(rawData, vertices, textures, normals);
+	} 
+	while (!parsingSuccessful);
+
+	// Produce colour arrays for OpenGL to process
+	GenerateRandomValues(colourVector, vertices->size());
+}
 
 int main(int argc, char** argv)
 {
-	vector<glm::vec4> renderableModel;
+	// Load and parse model data
+	vector<glm::vec4> vertices;
+	vector<glm::vec2> textures;
+	vector<glm::vec4> normals;
 	vector<glm::vec4> colourVector;
-
-	//LoadAndParseModel(&renderableModel, &colourVector);
+	LoadAndParseModel(&vertices, &textures, &normals, &colourVector);
 
 	// Initialise GLFW and GLEW
 	glfwInit();
@@ -179,13 +172,18 @@ int main(int argc, char** argv)
 
 	// Enable depth test
 	glEnable(GL_DEPTH_TEST);
+
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
+	// Load shaders
 	GLuint program = LoadShaders("Resources/shader.vert", "Resources/shader.frag");
 
-	GLuint vertexbuffer;
-	GLuint colourbuffer;
+	// Genereate, bind and fill vertex and colour buffers
+	GLuint vertexBuffer;
+	GLuint colourBuffer;
+	GenerateVertexBuffer(&vertexBuffer, vertices);
+	GenerateColourBuffer(&colourBuffer, colourVector);
 
 	// Do while loop can be exited by user input
 	cout << endl << "Model Loaded. Press Q to quit." << endl;
@@ -195,21 +193,12 @@ int main(int argc, char** argv)
 	{
 		// Generate a rotation matrix and rotate every vertex
 		glm::vec3 rotationAxis(0, 1, 0);
-		Rotate(&renderableModel, rotationAxis, 0.005f);
-
-		// Re-generate, re-bind and re-fill buffers with new vertex data 
-		glGenBuffers(1, &vertexbuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * renderableModel.size(), &renderableModel[0], GL_STATIC_DRAW);
-
-		glGenBuffers(1, &colourbuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, colourbuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec4) * colourVector.size(), &colourVector[0], GL_STATIC_DRAW);
+		Rotate(&vertices, rotationAxis, 0.005f);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		glUseProgram(program);
-		Display(&vertexbuffer, &colourbuffer, renderableModel.size());
+		Display(&vertexBuffer, &colourBuffer, vertices.size());
 
 		// If a key is pressed, pause rendering and allow the user it enter a full line
 		while (_kbhit())
@@ -234,7 +223,9 @@ int main(int argc, char** argv)
 
 			if (capitalisedInput == "LOAD")
 			{
-				//LoadAndParseModel(&renderableModel, &colourVector);
+				LoadAndParseModel(&vertices, &textures, &normals, &colourVector);
+				GenerateVertexBuffer(&vertexBuffer, vertices);
+				GenerateColourBuffer(&colourBuffer, colourVector);
 				break;
 			}
 		}
