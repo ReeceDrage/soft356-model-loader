@@ -1,17 +1,5 @@
 #pragma once
 
-struct FaceRecordVertex
-{
-	int vertexIndex;
-	int textureIndex;
-	int normalIndex;
-};
-
-struct FaceRecord
-{
-	FaceRecordVertex vertexArray[3];
-};
-
 class OBJParser
 {
 private:
@@ -26,4 +14,16 @@ private:
 public:
 
 	void ParseOBJ(std::vector<std::string> rawData, std::vector<glm::vec4>* vertices, std::vector<glm::vec2>* textures, std::vector<glm::vec4>* normals);
+};
+
+struct FaceRecordVertex
+{
+	int vertexIndex;
+	int textureIndex;
+	int normalIndex;
+};
+
+struct FaceRecord
+{
+	FaceRecordVertex vertexArray[3];
 };

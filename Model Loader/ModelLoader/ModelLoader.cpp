@@ -25,6 +25,8 @@ using namespace std;
 
 void LoadFile(vector<string>* data, string fileName)
 {
+	OBJParser parser;
+
 	// Create input stream
 	string line;
 	ifstream myFile(fileName);

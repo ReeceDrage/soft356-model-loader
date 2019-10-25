@@ -13,6 +13,19 @@
 using namespace std;
 using namespace glm;
 
+void OBJParser::StringSplit(string data, vector<string>* returnedString, char delimiter)
+{
+	// Create a string stream using the input string
+	stringstream stream(data);
+	string section;
+
+	// Get each substring separated by the delimiter character and add it to the returnedString vector
+	while (getline(stream, section, delimiter))
+	{
+		returnedString->push_back(section);
+	}
+}
+
 void OBJParser::RemoveLeadingCharacters(string* data, int numberOfCharacters)
 {
 	// Remove leading characters and return a string containing data
