@@ -1,9 +1,8 @@
 ﻿  ModelLoader.cpp
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(211,22): warning C4018:  '<': signed/unsigned mismatch
-  LINK : 0 new modules and 1 (out of 48) modules have changed since prior linking
+D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(220,22): warning C4018:  '<': signed/unsigned mismatch
+  LINK : 0 new modules and 1 (out of 49) modules have changed since prior linking
   Generating non-SAFESEH image.
   Starting pass 2
-       OBJParser.obj
        ModelLoader.obj
        MSVCRTD.lib(loadcfg.obj)
   Finished pass 2

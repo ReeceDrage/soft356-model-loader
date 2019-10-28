@@ -6,6 +6,7 @@
 #include <vector>
 #include <conio.h>
 #include <locale>
+#include <time.h>
 
 // Nupengl include statements for OpenGL rendering
 #include "GL/glew.h"
@@ -117,6 +118,8 @@ void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<ve
 	OBJParser parser;
 	bool parsingSuccessful;
 
+	time_t start, end;
+
 	// Attempt loading until a valid model is loaded
 	do
 	{
@@ -133,6 +136,8 @@ void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<ve
 		normals->clear();
 		colourVector->clear();
 
+		time(&start);
+
 		// Load a model file
 		LoadFile(&rawData, inputString);
 
@@ -141,8 +146,13 @@ void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<ve
 	} 
 	while (!parsingSuccessful);
 
+	time(&end);
+
 	// Produce colour arrays for OpenGL to process
 	GenerateRandomValues(colourVector, vertices->size());
+
+	cout << endl << "Model Loaded. Time Taken: " << (double)end - start << "s. " << endl;
+	cout << "Type QUIT to quit and LOAD to load a new model." << endl << endl;
 }
 
 int main(int argc, char** argv)
@@ -180,7 +190,6 @@ int main(int argc, char** argv)
 	GenerateColourBuffer(&colourBuffer, colourVector);
 
 	// Do while loop can be exited by user input
-	cout << endl << "Model Loaded. Press Q to quit." << endl;
 	bool isActive = true;
 
 	float rotationValue = 0.005f;
