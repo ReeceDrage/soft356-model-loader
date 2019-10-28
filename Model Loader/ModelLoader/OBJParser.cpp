@@ -74,7 +74,9 @@ bool OBJParser::ParseVertex(string data, vec4* vertex)
 		// All coordinate values stored as floats
 		vertex->x = stof(splitString[0]);
 		vertex->y = stof(splitString[1]);
-		vertex->z = stof(splitString[2]);
+
+		// Models were rendering inverted. Invert Z axis value to fix this.
+		vertex->z = stof(splitString[2]) * -1;
 
 		// Not all OBJ files contain W values, so set to 1 if they're not present
 		if (splitString.size() < 3)
