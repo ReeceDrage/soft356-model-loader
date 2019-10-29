@@ -183,6 +183,16 @@ int main(int argc, char** argv)
 	// Load shaders
 	GLuint program = LoadShaders("Resources/shader.vert", "Resources/shader.frag");
 
+	float angleValue = 45.0f;
+
+	glm::mat4 modelMatrix = glm::mat4(1.0f);
+	glm::mat4 viewMatrix = glm::lookAt(glm::vec3(4, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	glm::mat4 projectionMatrix = glm::perspective(glm::radians(angleValue), (800.0f / 800.0f), 0.1f, 100.0f);
+
+	glm::mat4 mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
+
+	GLuint matrixID = glGetUniformLocation(program, "MVP");
+
 	// Genereate, bind and fill vertex and colour buffers
 	GLuint vertexBuffer;
 	GLuint colourBuffer;
@@ -199,6 +209,7 @@ int main(int argc, char** argv)
 		// Generate a rotation matrix and rotate every vertex
 		glm::vec3 rotationAxis(0, 1, 0);
 		Rotate(program, rotationAxis, rotationValue);
+		glUniformMatrix4fv(matrixID, 1, GL_FALSE, &mvpMatrix[0][0]);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -213,27 +224,44 @@ int main(int argc, char** argv)
 			string userInput;
 			string capitalisedInput;
 
-			// Take user input
-			cin >> userInput;
+			char inputChar = _getch();
 
-			// Capitalise the input to remove case sensitivity
-			for (int i = 0; i < userInput.length(); i++)
+			if (inputChar != 'w' && inputChar != 's')
 			{
-				capitalisedInput.push_back(toupper(userInput[i]));
+				// Take user input
+				cin >> userInput;
+
+				// Capitalise the input to remove case sensitivity
+				for (int i = 0; i < userInput.length(); i++)
+				{
+					capitalisedInput.push_back(toupper(userInput[i]));
+				}
+
+				if (capitalisedInput == "QUIT")
+				{
+					isActive = false;
+					break;
+				}
+
+				if (capitalisedInput == "LOAD")
+				{
+					LoadAndParseModel(&vertices, &textures, &normals, &colourVector);
+					GenerateVertexBuffer(&vertexBuffer, vertices);
+					GenerateColourBuffer(&colourBuffer, colourVector);
+					break;
+				}
 			}
-
-			if (capitalisedInput == "QUIT")
+			else if (inputChar == 'w')
 			{
-				isActive = false;
-				break;
+				angleValue += 2.0f;
+				projectionMatrix = glm::perspective(glm::radians(angleValue), (800.0f / 800.0f), 0.1f, 100.0f);
+				mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
 			}
-
-			if (capitalisedInput == "LOAD")
+			else
 			{
-				LoadAndParseModel(&vertices, &textures, &normals, &colourVector);
-				GenerateVertexBuffer(&vertexBuffer, vertices);
-				GenerateColourBuffer(&colourBuffer, colourVector);
-				break;
+				angleValue -= 2.0f;
+				projectionMatrix = glm::perspective(glm::radians(angleValue), (800.0f / 800.0f), 0.1f, 100.0f);
+				mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
 			}
 		}
 	} 
