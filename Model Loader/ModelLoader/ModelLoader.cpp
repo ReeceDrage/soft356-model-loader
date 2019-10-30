@@ -22,6 +22,7 @@
 // Include statements for external header files
 #include "OBJParser.h"
 #include "ShaderLoader.h"
+#include "OpenGLHandler.h"
 
 using namespace std;
 using namespace glm;
@@ -91,27 +92,6 @@ void Rotate(GLuint program, glm::vec3 rotationAxis, float rotationAngle)
 	}
 }
 
-void Display(GLuint* vertexBuffer, GLuint* colourBuffer, long numberOfVertices)
-{
-	// Clear using depth buffer to ensure edges are rendered correctly along the Z axis
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// Bind buffer values
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, (*vertexBuffer));
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, (void*) 0);
-
-	// Bind buffer values
-	glEnableVertexAttribArray(1);
-	glBindBuffer(GL_ARRAY_BUFFER, (*colourBuffer));
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-	// Draw arrays to the window
-	glDrawArrays(GL_TRIANGLES, 0, numberOfVertices); // Starting from vertex 0; 3 vertices total -> 1 triangle
-	glDisableVertexAttribArray(0);
-	glDisableVertexAttribArray(1);
-}
-
 void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<vec4> *normals, vector<vec4> *colourVector)
 {
 	vector<string> rawData;
@@ -164,21 +144,10 @@ int main(int argc, char** argv)
 	vector<glm::vec4> colourVector;
 	LoadAndParseModel(&vertices, &textures, &normals, &colourVector);
 
-	// Initialise GLFW and GLEW
-	glfwInit();
-	GLFWwindow* window = glfwCreateWindow(800, 800, "Render Window", NULL, NULL);
-	glfwMakeContextCurrent(window);
-	glewInit();
-
-	GLuint vertexArray;
-	glGenVertexArrays(1, &vertexArray);
-	glBindVertexArray(vertexArray);
-
-	// Enable depth test
-	glEnable(GL_DEPTH_TEST);
-
-	// Accept fragment if it closer to the camera than the former one
-	glDepthFunc(GL_LESS);
+	// Create OpenGLHandler to open the window and initialize libraries and vertex arrays
+	GLFWwindow* window;
+	OpenGLHandler handler;
+	handler.Initialize(&window, 800, 800);
 
 	// Load shaders
 	GLuint program = LoadShaders("Resources/shader.vert", "Resources/shader.frag");
@@ -214,7 +183,7 @@ int main(int argc, char** argv)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 		glUseProgram(program);
-		Display(&vertexBuffer, &colourBuffer, vertices.size());
+		handler.Display(&vertexBuffer, &colourBuffer, vertices.size());
 
 		rotationValue += 0.01f;
 

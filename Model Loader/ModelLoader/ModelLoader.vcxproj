@@ -126,6 +126,7 @@
   <ItemGroup>
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="OBJParser.cpp" />
+    <ClCompile Include="OpenGLHandler.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OBJParser.h" />
+    <ClInclude Include="OpenGLHandler.h" />
     <ClInclude Include="ShaderLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
