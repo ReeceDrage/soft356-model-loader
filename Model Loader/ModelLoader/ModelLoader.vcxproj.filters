@@ -21,10 +21,10 @@
     <ClCompile Include="ShaderLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OBJParser.cpp">
+    <ClCompile Include="OpenGLHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLHandler.cpp">
+    <ClCompile Include="ModelParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +35,10 @@
     <ClInclude Include="ShaderLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OBJParser.h">
+    <ClInclude Include="OpenGLHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLHandler.h">
+    <ClInclude Include="ModelParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

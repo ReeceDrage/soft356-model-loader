@@ -1,17 +1,4 @@
-﻿  ModelLoader.cpp
-  OpenGLHandler.cpp
-  Generating Code...
-D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): warning C4018: '<': signed/unsigned mismatch
-  LINK : New file: Debug\OpenGLHandler.obj
-  LINK : 1 new modules and 1 (out of 49) modules have changed since prior linking
-  LINK : object file added; performing full link
-  
-  Invoking LINK.EXE:
-   /ERRORREPORT:PROMPT @C:\Users\reece\AppData\Local\Temp\tmpbadd360b98474a9c8dd112488a389065.rsp
-   /nologo
-   /incremental
-   /fullbuild
-  
+﻿  
   Starting pass 1
   Processed /DEFAULTLIB:msvcprtd
   Processed /DEFAULTLIB:freeglut.lib
@@ -168,31 +155,31 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\lib\x86\msvcprtd.lib:
         Found "__declspec(dllimport) public: __thiscall std::_Lockit::_Lockit(int)" (__imp_??0_Lockit@std@@QAE@H@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __thiscall std::_Lockit::~_Lockit(void)" (__imp_??1_Lockit@std@@QAE@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "bool __cdecl std::uncaught_exception(void)" (?uncaught_exception@std@@YA_NXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "void __cdecl std::_Xbad_alloc(void)" (?_Xbad_alloc@std@@YAXXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "void __cdecl std::_Xlength_error(char const *)" (?_Xlength_error@std@@YAXPBD@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "void __cdecl std::_Xout_of_range(char const *)" (?_Xout_of_range@std@@YAXPBD@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "void __cdecl std::_Facet_Register(class std::_Facet_base *)" (?_Facet_Register@std@@YAXPAV_Facet_base@1@@Z)
@@ -253,27 +240,27 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __thiscall std::ios_base::operator bool(void)const " (__imp_??Bios_base@std@@QBE_NXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: bool __thiscall std::ios_base::good(void)const " (__imp_?good@ios_base@std@@QBE_NXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::ios_base::flags(void)const " (__imp_?flags@ios_base@std@@QBEHXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __int64 __thiscall std::ios_base::width(void)const " (__imp_?width@ios_base@std@@QBE_JXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __int64 __thiscall std::ios_base::width(__int64)" (__imp_?width@ios_base@std@@QAE_J_J@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::locale __thiscall std::ios_base::getloc(void)const " (__imp_?getloc@ios_base@std@@QBE?AVlocale@2@XZ)
@@ -281,12 +268,12 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::basic_streambuf<char,struct std::char_traits<char> >(void)" (__imp_??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: virtual __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::~basic_streambuf<char,struct std::char_traits<char> >(void)" (__imp_??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::locale __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::getloc(void)const " (__imp_?getloc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QBE?AVlocale@2@XZ)
@@ -295,62 +282,62 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::sbumpc(void)" (__imp_?sbumpc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::sgetc(void)" (__imp_?sgetc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::snextc(void)" (__imp_?snextc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::sputc(char)" (__imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAEHD@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __int64 __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::sputn(char const *,__int64)" (__imp_?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QAE_JPBD_J@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::eback(void)const " (__imp_?eback@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::gptr(void)const " (__imp_?gptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::pptr(void)const " (__imp_?pptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::egptr(void)const " (__imp_?egptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::gbump(int)" (__imp_?gbump@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEXH@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::setg(char *,char *,char *)" (__imp_?setg@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEXPAD00@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::epptr(void)const " (__imp_?epptr@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::_Gndec(void)" (__imp_?_Gndec@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEPADXZ)
@@ -371,7 +358,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: char * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::_Pninc(void)" (__imp_?_Pninc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEPADXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: __int64 __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::_Pnavail(void)const " (__imp_?_Pnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBE_JXZ)
@@ -396,47 +383,47 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: virtual __thiscall std::basic_ios<char,struct std::char_traits<char> >::~basic_ios<char,struct std::char_traits<char> >(void)" (__imp_??1?$basic_ios@DU?$char_traits@D@std@@@std@@UAE@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: void __thiscall std::basic_ios<char,struct std::char_traits<char> >::setstate(int,bool)" (__imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > * __thiscall std::basic_ios<char,struct std::char_traits<char> >::tie(void)const " (__imp_?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_streambuf<char,struct std::char_traits<char> > * __thiscall std::basic_ios<char,struct std::char_traits<char> >::rdbuf(void)const " (__imp_?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: char __thiscall std::basic_ios<char,struct std::char_traits<char> >::fill(void)const " (__imp_?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: char __thiscall std::basic_ios<char,struct std::char_traits<char> >::widen(char)const " (__imp_?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDD@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: __thiscall std::basic_ios<char,struct std::char_traits<char> >::basic_ios<char,struct std::char_traits<char> >(void)" (__imp_??0?$basic_ios@DU?$char_traits@D@std@@@std@@IAE@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: void __thiscall std::basic_ostream<char,struct std::char_traits<char> >::_Osfx(void)" (__imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > & (__cdecl*)(class std::basic_ostream<char,struct std::char_traits<char> > &))" (__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@P6AAAV01@AAV01@@Z@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::operator<<(double)" (__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@N@Z)
@@ -444,12 +431,12 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::put(char)" (__imp_?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@D@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: class std::basic_ostream<char,struct std::char_traits<char> > & __thiscall std::basic_ostream<char,struct std::char_traits<char> >::flush(void)" (__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __thiscall std::basic_istream<char,struct std::char_traits<char> >::basic_istream<char,struct std::char_traits<char> >(class std::basic_streambuf<char,struct std::char_traits<char> > *,bool)" (__imp_??0?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@_N@Z)
@@ -462,7 +449,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: bool __thiscall std::basic_istream<char,struct std::char_traits<char> >::_Ipfx(bool)" (__imp_?_Ipfx@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE_N_N@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "struct _iobuf * __cdecl std::_Fiopen(char const *,int,int)" (?_Fiopen@std@@YAPAU_iobuf@@PBDHH@Z)
@@ -471,7 +458,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "protected: virtual __int64 __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::showmanyc(void)" (?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE_JXZ)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: static class std::locale::id std::ctype<char>::id" (__imp_?id@?$ctype@D@std@@2V0locale@2@A)
@@ -486,44 +473,44 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) class std::basic_ostream<char,struct std::char_traits<char> > std::cout" (__imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "void __cdecl std::_Xinvalid_argument(char const *)" (?_Xinvalid_argument@std@@YAXPBD@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::setp(char *,char *)" (__imp_?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEXPAD0@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) protected: void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::setp(char *,char *,char *)" (__imp_?setp@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAEXPAD00@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: int __thiscall std::basic_istream<char,struct std::char_traits<char> >::get(void)" (__imp_?get@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEHXZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: __thiscall std::basic_iostream<char,struct std::char_traits<char> >::basic_iostream<char,struct std::char_traits<char> >(class std::basic_streambuf<char,struct std::char_traits<char> > *)" (__imp_??0?$basic_iostream@DU?$char_traits@D@std@@@std@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@1@@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "__declspec(dllimport) public: virtual __thiscall std::basic_iostream<char,struct std::char_traits<char> >::~basic_iostream<char,struct std::char_traits<char> >(void)" (__imp_??1?$basic_iostream@DU?$char_traits@D@std@@@std@@UAE@XZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "public: virtual void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::_Lock(void)" (?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "public: virtual void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::_Unlock(void)" (?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "protected: virtual void __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::imbue(class std::locale const &)" (?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEXABVlocale@2@@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "protected: virtual class std::basic_streambuf<char,struct std::char_traits<char> > * __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::setbuf(char *,__int64)" (?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PAD_J@Z)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "protected: virtual int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::sync(void)" (?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found "protected: virtual int __thiscall std::basic_streambuf<char,struct std::char_traits<char> >::uflow(void)" (?uflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ)
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded msvcprtd.lib(MSVCP140D.dll)
         Found __IMPORT_DESCRIPTOR_MSVCP140D
           Referenced in msvcprtd.lib(MSVCP140D.dll)
@@ -642,36 +629,36 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\lib\x86\MSVCRTD.lib:
         Found "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(new_scalar.obj)
         Found "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(delete_scalar_size.obj)
         Found @_RTC_CheckStackVars@8
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in OpenGLHandler.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(stack.obj)
         Found @__CheckForDebuggerJustMyCode@4
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in OpenGLHandler.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(debugger_jmc.obj)
         Found @__security_check_cookie@4
           Referenced in msvcprtd.lib(locale0_implib.obj)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in OpenGLHandler.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(secchk.obj)
         Found __RTC_InitBase
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in OpenGLHandler.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(init.obj)
@@ -680,20 +667,20 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded MSVCRTD.lib(ftol3.obj)
         Found "const type_info::`vftable'" (??_7type_info@@6B@)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(std_type_info_static.obj)
         Found ___security_cookie
           Referenced in msvcprtd.lib(locale0_implib.obj)
           Referenced in MSVCRTD.lib(secchk.obj)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in OpenGLHandler.obj
           Referenced in ShaderLoader.obj
           Loaded MSVCRTD.lib(gs_cookie.obj)
         Found __fltused
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded MSVCRTD.lib(fltused.obj)
         Found _mainCRTStartup
           Loaded MSVCRTD.lib(exe_main.obj)
@@ -811,48 +798,51 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\lib\x86\vcruntimed.lib:
         Found ___std_exception_copy
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Referenced in MSVCRTD.lib(throw_bad_alloc.obj)
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found ___std_exception_destroy
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Referenced in MSVCRTD.lib(throw_bad_alloc.obj)
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found _memcmp
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found _memcpy
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found _memmove
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found __CxxThrowException@8
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Referenced in MSVCRTD.lib(throw_bad_alloc.obj)
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found ___CxxFrameHandler3
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Referenced in msvcprtd.lib(locale0_implib.obj)
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found _memset
           Referenced in MSVCRTD.lib(utility_desktop.obj)
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Referenced in ShaderLoader.obj
+          Loaded vcruntimed.lib(VCRUNTIME140D.dll)
+        Found __purecall
+          Referenced in ModelParser.obj
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found ___std_type_info_destroy_list
           Referenced in MSVCRTD.lib(tncleanup.obj)
@@ -893,6 +883,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Referenced in vcruntimed.lib(VCRUNTIME140D.dll)
           Referenced in vcruntimed.lib(VCRUNTIME140D.dll)
           Referenced in vcruntimed.lib(VCRUNTIME140D.dll)
+          Referenced in vcruntimed.lib(VCRUNTIME140D.dll)
           Loaded vcruntimed.lib(VCRUNTIME140D.dll)
         Found VCRUNTIME140D_NULL_THUNK_DATA
           Referenced in vcruntimed.lib(VCRUNTIME140D.dll)
@@ -900,7 +891,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrtd.lib:
         Found __imp___invalid_parameter
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp___calloc_dbg
@@ -908,7 +899,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp___CrtDbgReport
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found _cos
@@ -987,7 +978,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Loaded ucrtd.lib(ucrtbased.dll)
         Found _strlen
           Referenced in ModelLoader.obj
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Referenced in ShaderLoader.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp__toupper
@@ -1006,13 +997,13 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
           Referenced in ModelLoader.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp___errno
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp__strtof
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp__strtol
-          Referenced in OBJParser.obj
+          Referenced in ModelParser.obj
           Loaded ucrtd.lib(ucrtbased.dll)
         Found __imp____acrt_iob_func
           Referenced in ShaderLoader.obj
@@ -1416,26 +1407,26 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
    /v
    /x
    /fo
-   "C:\Users\reece\AppData\Local\Temp\lnk{E6D15F08-A344-4112-983C-31844796B108}.tmp"
-   "C:\Users\reece\AppData\Local\Temp\lnk{63660575-7D22-48F9-AD24-62C8CFF4AE86}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{24C25E56-B756-4664-A4DA-EC99997510A0}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{9CA203AB-F826-4A23-B63C-675092536120}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\reece\AppData\Local\Temp\lnk{E6D15F08-A344-4112-983C-31844796B108}.tmp
+  Creating C:\Users\reece\AppData\Local\Temp\lnk{24C25E56-B756-4664-A4DA-EC99997510A0}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\reece\AppData\Local\Temp\lnk{63660575-7D22-48F9-AD24-62C8CFF4AE86}.tmp.
+  C:\Users\reece\AppData\Local\Temp\lnk{9CA203AB-F826-4A23-B63C-675092536120}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\reece\AppData\Local\Temp\lnk{BB855655-0860-4151-95CD-DB95D399DD06}.tmp"
+   /out:"C:\Users\reece\AppData\Local\Temp\lnk{A3424AD7-CE59-4EEC-A13C-714C9302573D}.tmp"
    /readonly
-   "C:\Users\reece\AppData\Local\Temp\lnk{E6D15F08-A344-4112-983C-31844796B108}.tmp"
+   "C:\Users\reece\AppData\Local\Temp\lnk{24C25E56-B756-4664-A4DA-EC99997510A0}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.23.28106.4
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
@@ -1463,7 +1454,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
        * linker generated manifest res *
        ShaderLoader.obj
        OpenGLHandler.obj
-       OBJParser.obj
+       ModelParser.obj
        ModelLoader.obj
        glew32.lib(glew32.dll)
        glew32.lib(glew32.dll)
@@ -1679,6 +1670,7 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
        vcruntimed.lib(VCRUNTIME140D.dll)
        vcruntimed.lib(VCRUNTIME140D.dll)
        vcruntimed.lib(VCRUNTIME140D.dll)
+       vcruntimed.lib(VCRUNTIME140D.dll)
        ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
@@ -1755,4 +1747,6 @@ D:\Repos\SOFT356-Reece-Drage\Model Loader\ModelLoader\ModelLoader.cpp(204,23): w
        ucrtd.lib(ucrtbased.dll)
        ucrtd.lib(ucrtbased.dll)
   Finished pass 2
+  Failed to connect to VCTIP: 'CreateFile' failed with 2
+  Launching VCTIP
   ModelLoader.vcxproj -> D:\Repos\SOFT356-Reece-Drage\Model Loader\Debug\ModelLoader.exe

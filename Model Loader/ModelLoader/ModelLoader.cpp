@@ -20,7 +20,7 @@
 #include "glm/gtc/type_ptr.hpp"
 
 // Include statements for external header files
-#include "OBJParser.h"
+#include "ModelParser.h"
 #include "ShaderLoader.h"
 #include "OpenGLHandler.h"
 
@@ -95,7 +95,8 @@ void Rotate(GLuint program, glm::vec3 rotationAxis, float rotationAngle)
 void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<vec4> *normals, vector<vec4> *colourVector)
 {
 	vector<string> rawData;
-	OBJParser parser;
+	ModelParser parser;
+	parser.SetStrategy("OBJ");
 	bool parsingSuccessful;
 
 	time_t start, end;
@@ -122,7 +123,7 @@ void LoadAndParseModel(vector<vec4> *vertices, vector<vec2> *textures, vector<ve
 		LoadFile(&rawData, inputString);
 
 		// Parse the loaded file into readable model data
-		parsingSuccessful = parser.ParseOBJ(rawData, vertices, textures, normals);
+		parsingSuccessful = parser.ParseModel(rawData, vertices, textures, normals);
 	} 
 	while (!parsingSuccessful);
 

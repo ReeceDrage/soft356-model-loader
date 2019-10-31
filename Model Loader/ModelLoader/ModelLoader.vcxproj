@@ -125,7 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ModelLoader.cpp" />
-    <ClCompile Include="OBJParser.cpp" />
+    <ClCompile Include="ModelParser.cpp" />
     <ClCompile Include="OpenGLHandler.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
   </ItemGroup>
@@ -133,7 +133,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OBJParser.h" />
+    <ClInclude Include="ModelParser.h" />
     <ClInclude Include="OpenGLHandler.h" />
     <ClInclude Include="ShaderLoader.h" />
   </ItemGroup>

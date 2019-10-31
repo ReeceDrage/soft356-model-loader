@@ -7,13 +7,41 @@
 // Include statements for the glm maths library
 #include "glm/glm.hpp"
 
-// Include statements for external header files
-#include "OBJParser.h"
+// Include statements for created header files
+#include "ModelParser.h"
 
-using namespace std;
-using namespace glm;
+using std::string;
+using std::vector;
+using glm::vec2;
+using glm::vec4;
 
-bool OBJParser::ParseOBJ(vector<string> rawData, vector<vec4>* vertices, vector<vec2>* textures, vector<vec4>* normals)
+void ModelParser::SetStrategy(string input)
+{
+	if (input == "OBJ")
+	{
+		ModelParser::strategy = new OBJParser();
+	}
+	else
+	{
+		ModelParser::strategy = NULL;
+	}
+}
+
+bool ModelParser::ParseModel(vector<string> rawData, vector<vec4>* vertices, vector<vec2>* textures, vector<vec4>* normals)
+{
+	try
+	{
+		ModelParser::strategy->Parse(rawData, vertices, textures, normals);
+	}
+	catch (std::exception e)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+bool OBJParser::Parse(std::vector<std::string> rawData, std::vector<glm::vec4>* vertices, std::vector<glm::vec2>* textures, std::vector<glm::vec4>* normals)
 {
 	bool parsingSuccessful = true;
 	vector<FaceRecord> tempFaces;
@@ -43,8 +71,6 @@ bool OBJParser::ParseOBJ(vector<string> rawData, vector<vec4>* vertices, vector<
 		}
 	}
 
-	cout << "Data parsing successful." << endl;
-
 	// Calculate exact vertices need from face data
 	for (int i = 0; i < tempFaces.size(); i++)
 	{
@@ -55,7 +81,7 @@ bool OBJParser::ParseOBJ(vector<string> rawData, vector<vec4>* vertices, vector<
 		}
 	}
 
-	cout << "Vertex calculation successful." << endl << endl;
+	std::cout << "Vertex calculation successful." << std::endl << std::endl;
 
 	return true;
 }
@@ -86,7 +112,7 @@ bool OBJParser::ParseVertex(string data, vec4* vertex)
 			vertex->w = 1;
 		}
 	}
-	catch (exception e)
+	catch (std::exception e)
 	{
 		return false;
 	}
@@ -119,7 +145,7 @@ bool OBJParser::ParseFaceData(string data, FaceRecord* face)
 			face->vertexArray[i] = faceRecordVertex;
 		}
 	}
-	catch (exception e)
+	catch (std::exception e)
 	{
 		return false;
 	}
@@ -130,7 +156,7 @@ bool OBJParser::ParseFaceData(string data, FaceRecord* face)
 void OBJParser::StringSplit(string data, vector<string>* returnedString, char delimiter)
 {
 	// Create a string stream using the input string
-	stringstream stream(data);
+	std::stringstream stream(data);
 	string section;
 
 	// Get each substring separated by the delimiter character and add it to the returnedString vector
@@ -149,7 +175,7 @@ void OBJParser::RemoveLeadingCharacters(string* data, int numberOfCharacters)
 int OBJParser::CalculateNumberOfLeadingCharacters(string data)
 {
 	// Create a stream from 2 characters in to the end of the string (Excluding "v ", "vn" etc.)
-	stringstream stream(data.substr(2, data.length()));
+	std::stringstream stream(data.substr(2, data.length()));
 	string section;
 	int counter = 0;
 
