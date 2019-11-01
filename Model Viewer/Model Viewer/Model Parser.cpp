@@ -17,12 +17,12 @@ using std::vector;
 using std::string;
 using std::stringstream;
 
-bool OBJParser::ParseOBJ(std::vector<std::string> rawData, Model model)
+bool OBJParser::ParseOBJ(vector<string> rawData, Model model)
 {
 	return true;
 }
 
-bool OBJParser::StringSplit(std::string data, std::vector<std::string>* splitData, char delimiter)
+bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimiter)
 {
 	// Create a string stream using the input string
 	stringstream stream(data);
@@ -33,6 +33,7 @@ bool OBJParser::StringSplit(std::string data, std::vector<std::string>* splitDat
 		// Get each substring separated by the delimiter character and add it to the returnedString vector
 		while (getline(stream, section, delimiter))
 		{
+			// Ignore empty entries
 			if (section != "")
 			{
 				splitData->push_back(section);
@@ -47,22 +48,22 @@ bool OBJParser::StringSplit(std::string data, std::vector<std::string>* splitDat
 	return true;
 }
 
-bool OBJParser::ParseVertexCoordinates(std::string data, glm::vec4 vertex)
+bool OBJParser::ParseVertexCoordinates(vector<string> data, vec4 vertex)
 {
 	return false;
 }
 
-bool OBJParser::ParseFaceCoordinates(std::string data, FaceRecord face)
+bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord face)
 {
 	return false;
 }
 
-bool OBJParser::ParseTextureCoordinates(std::string data, glm::vec2 texture)
+bool OBJParser::ParseTextureCoordinates(vector<string> data, vec2 texture)
 {
 	return false;
 }
 
-bool OBJParser::ParseNormalCoordinates(std::string data, glm::vec4 normal)
+bool OBJParser::ParseNormalCoordinates(vector<string> data, vec4 normal)
 {
 	return false;
 }

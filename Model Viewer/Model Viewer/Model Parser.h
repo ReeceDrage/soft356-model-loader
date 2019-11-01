@@ -10,8 +10,8 @@ public:
 
 private:
 	bool StringSplit(std::string data, std::vector<std::string>* splitData, char delimiter);
-	bool ParseVertexCoordinates(std::string data, glm::vec4 vertex);
-	bool ParseFaceCoordinates(std::string data, FaceRecord face);
-	bool ParseTextureCoordinates(std::string data, glm::vec2 texture);
-	bool ParseNormalCoordinates(std::string data, glm::vec4 normal);
+	bool ParseVertexCoordinates(std::vector<std::string> data, glm::vec4 vertex);
+	bool ParseFaceCoordinates(std::vector<std::string> data, FaceRecord face);
+	bool ParseTextureCoordinates(std::vector<std::string> data, glm::vec2 texture);
+	bool ParseNormalCoordinates(std::vector<std::string> data, glm::vec4 normal);
 };
