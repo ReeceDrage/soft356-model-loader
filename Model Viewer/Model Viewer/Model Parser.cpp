@@ -17,7 +17,7 @@ using std::vector;
 using std::string;
 using std::stringstream;
 
-bool OBJParser::ParseOBJ(vector<string> rawData, Model model)
+bool OBJParser::ParseOBJ(vector<string> rawData, Model *model)
 {
 	return true;
 }
@@ -48,22 +48,44 @@ bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimit
 	return true;
 }
 
-bool OBJParser::ParseVertexCoordinates(vector<string> data, vec4 vertex)
+bool OBJParser::ParseVertexCoordinates(vector<string> data, vec4* vertex)
+{
+	try
+	{
+		// Convert string values to floating points
+		vertex->x = stof(data[1]);
+		vertex->y = stof(data[2]);
+		vertex->z = stof(data[3]);
+
+		// If a W value is present, convert it to a float. Otherwise, set it to 1
+		if (data.size() > 4)
+		{
+			vertex->w = stof(data[4]);
+		}
+		else
+		{
+			vertex->w = 1;
+		}
+	}
+	catch (std::exception e)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 {
 	return false;
 }
 
-bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord face)
+bool OBJParser::ParseTextureCoordinates(vector<string> data, vec2* texture)
 {
 	return false;
 }
 
-bool OBJParser::ParseTextureCoordinates(vector<string> data, vec2 texture)
-{
-	return false;
-}
-
-bool OBJParser::ParseNormalCoordinates(vector<string> data, vec4 normal)
+bool OBJParser::ParseNormalCoordinates(vector<string> data, vec4* normal)
 {
 	return false;
 }
