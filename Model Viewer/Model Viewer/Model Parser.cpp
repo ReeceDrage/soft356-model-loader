@@ -77,7 +77,36 @@ bool OBJParser::ParseVertexCoordinates(vector<string> data, vec4* vertex)
 
 bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 {
-	return false;
+	for (int i = 1; i < data.size(); i++)
+	{
+		FaceRecordVertex vertexRecord;
+		vector<string> splitString;
+
+		// Split the string by /, keeping empty entries intact
+		StringSplit(data[i], &splitString, '/', false);
+
+		try
+		{
+			// Leave any empty components null
+			if (splitString[0] != "")
+				vertexRecord.vertexIndex = stoi(splitString[0]);
+
+			if (splitString[1] != "")
+				vertexRecord.textureIndex = stoi(splitString[1]);
+
+			if (splitString[2] != "")
+				vertexRecord.normalIndex = stoi(splitString[2]);
+		}
+		catch (std::exception e)
+		{
+			return false;
+		}
+
+		face->vertexVector.push_back(vertexRecord);
+		splitString.clear();
+	}
+
+	return true;
 }
 
 bool OBJParser::ParseTextureCoordinates(vector<string> data, vec2* texture)
