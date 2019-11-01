@@ -22,7 +22,7 @@ bool OBJParser::ParseOBJ(vector<string> rawData, Model *model)
 	return true;
 }
 
-bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimiter)
+bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimiter, bool removeWhiteSpace)
 {
 	// Create a string stream using the input string
 	stringstream stream(data);
@@ -33,8 +33,8 @@ bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimit
 		// Get each substring separated by the delimiter character and add it to the returnedString vector
 		while (getline(stream, section, delimiter))
 		{
-			// Ignore empty entries
-			if (section != "")
+			// Ignore empty entries if removeWhiteSpace is true
+			if (section != "" || !removeWhiteSpace)
 			{
 				splitData->push_back(section);
 			}
