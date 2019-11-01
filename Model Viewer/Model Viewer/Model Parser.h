@@ -7,6 +7,7 @@ class OBJParser
 {
 public:
 	bool ParseOBJ(std::vector<std::string> rawData, Model *model);
+
 	void GetErrorString(std::vector<std::string>* errorVector);
 
 private:

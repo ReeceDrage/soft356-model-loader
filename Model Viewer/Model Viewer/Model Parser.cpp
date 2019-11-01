@@ -118,3 +118,21 @@ bool OBJParser::ParseNormalCoordinates(vector<string> data, vec4* normal)
 {
 	return false;
 }
+
+// Error message handling functions
+
+void OBJParser::AddToErrorString(string errorMessage)
+{
+	OBJParser::errorMessage.push_back(errorMessage);
+}
+
+void OBJParser::GetErrorString(vector<string>* errorVector)
+{
+	for (int i = 0; i < OBJParser::errorMessage.size(); i++)
+	{
+		errorVector->push_back(errorMessage[i]);
+	}
+
+	// Clear the error message for the next parsing attempt
+	errorMessage.clear();
+}
