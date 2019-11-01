@@ -14,6 +14,7 @@ private:
 	std::vector<std::string> errorMessage;
 
 	bool StringSplit(std::string data, std::vector<std::string>* splitData, char delimiter, bool removeWhitespace);
+	bool ParseVertexGroup(const std::vector<std::string>* data, VertexGroup* vertexGroup);
 	bool ParseVertexCoordinates(std::vector<std::string> data, glm::vec4* vertex);
 	bool ParseFaceCoordinates(std::vector<std::string> data, FaceRecord* face);
 	bool ParseTextureCoordinates(std::vector<std::string> data, glm::vec2* texture);
