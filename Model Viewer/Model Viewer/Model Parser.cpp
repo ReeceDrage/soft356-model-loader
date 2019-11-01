@@ -42,6 +42,7 @@ bool OBJParser::StringSplit(string data, vector<string>* splitData, char delimit
 	}
 	catch (std::exception e)
 	{
+		AddToErrorString("String splitting process failed on string: " + data + ", splitting by: " + delimiter + ".");
 		return false;
 	}
 
@@ -69,6 +70,7 @@ bool OBJParser::ParseVertexCoordinates(vector<string> data, vec4* vertex)
 	}
 	catch (std::exception e)
 	{
+		AddToErrorString("Vertex parsing failed. String -> floating point conversion was unsuccessful.");
 		return false;
 	}
 
@@ -83,10 +85,16 @@ bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 		vector<string> splitString;
 
 		// Split the string by /, keeping empty entries intact
-		StringSplit(data[i], &splitString, '/', false);
+		bool splitSuccessful = StringSplit(data[i], &splitString, '/', false);
 
 		try
 		{
+			// If string splitting fails, do not proceed
+			if (!splitSuccessful)
+			{
+				throw 0;
+			}
+
 			// Leave any empty components null
 			if (splitString[0] != "")
 				vertexRecord.vertexIndex = stoi(splitString[0]);
@@ -99,6 +107,7 @@ bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 		}
 		catch (std::exception e)
 		{
+			AddToErrorString("Face parsing failed. String -> integer conversion was unsuccessful.");
 			return false;
 		}
 
