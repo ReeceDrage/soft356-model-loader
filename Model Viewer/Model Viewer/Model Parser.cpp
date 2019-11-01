@@ -120,12 +120,38 @@ bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 
 bool OBJParser::ParseTextureCoordinates(vector<string> data, vec2* texture)
 {
-	return false;
+	try
+	{
+		// Convert string values to floating points
+		texture->x = stof(data[1]);
+		texture->y = stof(data[2]);
+	}
+	catch (std::exception e)
+	{
+		AddToErrorString("Texture parsing failed. String -> floating point conversion was unsuccessful.");
+		return false;
+	}
+
+	return true;
 }
 
 bool OBJParser::ParseNormalCoordinates(vector<string> data, vec4* normal)
 {
-	return false;
+	try
+	{
+		// Convert string values to floating points
+		normal ->x = stof(data[1]);
+		normal->y = stof(data[2]);
+		normal->z = stof(data[3]);
+		normal->w = 1;
+	}
+	catch (std::exception e)
+	{
+		AddToErrorString("Normal parsing failed. String -> floating point conversion was unsuccessful.");
+		return false;
+	}
+
+	return true;
 }
 
 // Error message handling functions
