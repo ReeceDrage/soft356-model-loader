@@ -17,6 +17,18 @@ using glm::vec4;
 using std::vector;
 using std::string;
 
+struct FaceRecordVertex
+{
+	int vertexIndex;
+	int textureIndex;
+	int normalIndex;
+};
+
+struct FaceRecord
+{
+	vector<FaceRecordVertex> vertexVector;
+};
+
 struct MaterialData
 {
 	// Basic colouring and rendering variables
