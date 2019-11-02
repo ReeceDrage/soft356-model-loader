@@ -1,6 +1,11 @@
 ﻿  Model Parser.cpp
 D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(25,20): warning C4018: '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(68,20): warning C4018: '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(173,20): warning C4018: '<': signed/unsigned mismatch
-D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(257,20): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(76,20): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(118,21): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(163,21): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(175,20): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(179,21): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(214,23): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(286,20): warning C4018: '<': signed/unsigned mismatch
+D:\Repos\SOFT356-Reece-Drage\Model Viewer\Model Viewer\Model Parser.cpp(370,20): warning C4018: '<': signed/unsigned mismatch
   Model Viewer.vcxproj -> D:\Repos\SOFT356-Reece-Drage\Model Viewer\Debug\Model Viewer.exe
