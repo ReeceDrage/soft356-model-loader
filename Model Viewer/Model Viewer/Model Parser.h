@@ -14,7 +14,7 @@ private:
 	std::vector<std::string> errorMessage;
 
 	bool StringSplit(std::string data, std::vector<std::string>* splitData, char delimiter, bool removeWhitespace);
-	bool ParseObject(const std::vector<std::vector<std::string>>* data, ModelObject* object);
+	bool ParseObject(const std::vector<std::vector<std::string>>* data, ModelObject* object, int* vertexOffset, int* textureOffset, int* normalOffset);
 	bool ParseVertexCoordinates(std::vector<std::string> data, glm::vec4* vertex);
 	bool ParseFaceCoordinates(std::vector<std::string> data, FaceRecord* face);
 	bool ParseTextureCoordinates(std::vector<std::string> data, glm::vec2* texture);

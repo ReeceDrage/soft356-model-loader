@@ -22,6 +22,10 @@ bool OBJParser::ParseOBJ(vector<string> rawData, Model *model)
 	vector<vector<string>> data;
 	int numberOfObjects = 0;
 
+	int vertexOffset = 0;
+	int textureOffset = 0;
+	int normalOffset = 0;
+
 	for (int i = 0; i < rawData.size(); i++)
 	{
 		// Split each string for easy access to the identifying prefix
@@ -35,7 +39,7 @@ bool OBJParser::ParseOBJ(vector<string> rawData, Model *model)
 			if (numberOfObjects > 0)
 			{
 				ModelObject object;
-				ParseObject(&data, &object);
+				ParseObject(&data, &object, &vertexOffset, &textureOffset, &normalOffset);
 				model->objects.push_back(object);
 				data.clear();
 			}
@@ -50,14 +54,14 @@ bool OBJParser::ParseOBJ(vector<string> rawData, Model *model)
 
 	// Ensure the final object is parsed and stored, or the full structure if no objects were detected
 	ModelObject object;
-	ParseObject(&data, &object);
+	ParseObject(&data, &object, &vertexOffset, &textureOffset, &normalOffset);
 	model->objects.push_back(object);
 	data.clear();
 
 	return true;
 }
 
-bool OBJParser::ParseObject(const vector<vector<string>>* data, ModelObject* object)
+bool OBJParser::ParseObject(const vector<vector<string>>* data, ModelObject* object, int* vertexOffset, int* textureOffset, int* normalOffset)
 {
 	// Variables to store coordinate values
 	vector<vec4> tempVectorCoordinates;
@@ -184,44 +188,53 @@ bool OBJParser::ParseObject(const vector<vector<string>>* data, ModelObject* obj
 			if (face.vertexVector.size() == 4)
 			{
 				// Triangle one
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[0].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[0].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[0].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[0].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[0].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[0].normalIndex - (*normalOffset) - 1]);
 
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[1].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[1].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[1].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[1].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[1].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[1].normalIndex - (*normalOffset) - 1]);
 
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[2].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[2].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[2].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[2].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[2].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[2].normalIndex - (*normalOffset) - 1]);
 
 				// Triangle two
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[2].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[2].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[2].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[2].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[2].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[2].normalIndex - (*normalOffset) - 1]);
 
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[3].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[3].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[3].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[3].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[3].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[3].normalIndex - (*normalOffset) - 1]);
 
-				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[0].vertexIndex - 1]);
-				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[0].textureIndex - 1]);
-				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[0].normalIndex - 1]);
+				vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[0].vertexIndex - (*vertexOffset) - 1]);
+				vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[0].textureIndex - (*textureOffset) - 1]);
+				vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[0].normalIndex - (*normalOffset) - 1]);
 			}
 			else
 			{
 				for (int k = 0; k < vertexGroupFaces[i][j].vertexVector.size(); k++)
 				{
-					vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[k].vertexIndex - 1]);
-					vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[k].textureIndex - 1]);
-					vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[k].normalIndex - 1]);
+					if (face.vertexVector[k].vertexIndex > 0)
+						vertexGroup.vertexCoordinates.push_back(tempVectorCoordinates[face.vertexVector[k].vertexIndex - (*vertexOffset) - 1]);
+
+					if (face.vertexVector[k].textureIndex > 0)
+						vertexGroup.textureCoordinates.push_back(tempTextureCoordinates[face.vertexVector[k].textureIndex - (*textureOffset) - 1]);
+
+					if (face.vertexVector[k].normalIndex > 0)
+						vertexGroup.normalCoordinates.push_back(tempNormalCoordinates[face.vertexVector[k].normalIndex - (*normalOffset) - 1]);
 				}
 			}
 		}
 
 		object->vertexGroups.push_back(vertexGroup);
 	}
+
+	(*vertexOffset) += tempVectorCoordinates.size();
+	(*textureOffset) += tempTextureCoordinates.size();
+	(*normalOffset) += tempNormalCoordinates.size();
 
 	return parseSuccessful;
 }
@@ -299,15 +312,27 @@ bool OBJParser::ParseFaceCoordinates(vector<string> data, FaceRecord* face)
 				throw 0;
 			}
 
-			// Leave any empty components null
-			if (splitString[0] != "")
-				vertexRecord.vertexIndex = stoi(splitString[0]);
+			if (splitString.size() == 3)
+			{
+				// Leave any empty components null
+				if (splitString[0] != "")
+					vertexRecord.vertexIndex = stoi(splitString[0]);
 
-			if (splitString[1] != "")
-				vertexRecord.textureIndex = stoi(splitString[1]);
+				if (splitString[1] != "")
+					vertexRecord.textureIndex = stoi(splitString[1]);
 
-			if (splitString[2] != "")
-				vertexRecord.normalIndex = stoi(splitString[2]);
+				if (splitString[2] != "")
+					vertexRecord.normalIndex = stoi(splitString[2]);
+			}
+			else if (splitString.size() == 2)
+			{
+				// Leave any empty components null
+				if (splitString[0] != "")
+					vertexRecord.vertexIndex = stoi(splitString[0]);
+
+				if (splitString[1] != "")
+					vertexRecord.textureIndex = stoi(splitString[1]);
+			}
 		}
 		catch (std::exception e)
 		{
