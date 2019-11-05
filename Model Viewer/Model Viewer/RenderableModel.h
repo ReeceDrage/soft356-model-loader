@@ -19,6 +19,7 @@ public:
 
 	void Initialise();
 	bool LoadModel(std::string fileName);
+	void Draw(GLuint shader, Viewport viewport, int positionOffset);
 
 private:
 

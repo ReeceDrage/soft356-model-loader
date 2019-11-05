@@ -108,3 +108,66 @@ void RenderableModel::Initialise()
 	glBindVertexArray(0);
 }
 
+void RenderableModel::Draw(GLuint shader, Viewport viewport, int positionOffset)
+{
+	// Use the previously generated VAO
+	glBindVertexArray(vertexArrayObject);
+	glUseProgram(shader);
+
+	// Generate a temporary MVP value based on the main one. Used for displaying the model at an offset.
+	Viewport tempViewport = viewport;
+	tempViewport.TranslateModel(positionOffset, 0.0f, 0.0f);
+
+	// Assign consistent uniform values
+	glm::mat4 MVP = tempViewport.GetMVPMatrix();
+	glUniformMatrix4fv(glGetUniformLocation(shader, "MVP"), 1, GL_FALSE, &MVP[0][0]);
+	glUniform1f(glGetUniformLocation(shader, "scaleValue"), scaleValue);
+
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
+
+	// Bind the generated texture
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	int offset = 0;
+
+	for (int i = 0; i < model.objects.size(); i++)
+	{
+		for (int j = 0; j < model.objects[i].vertexGroups.size(); j++)
+		{
+			VertexGroup vertexGroup = model.objects[i].vertexGroups[j];
+
+			if (vertexGroup.material.ambientTextureMap.texture)
+			{
+				TextureMap map = vertexGroup.material.ambientTextureMap;
+
+				// Assign texture data to the bound texture
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, map.width, map.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, map.texture);
+				glGenerateMipmap(GL_TEXTURE_2D);
+
+				hasTexture = true;
+			}
+			else
+			{
+				hasTexture = false;
+			}
+
+			// Assigned uniform values that change per vertex group
+			glUniform1i(glGetUniformLocation(shader, "vLoadTexture"), (int) hasTexture);
+			glUniform1i(glGetUniformLocation(shader, "inputTexture"), 0);
+			glUniform4fv(glGetUniformLocation(shader, "ambientColour"), 1, glm::value_ptr(vertexGroup.material.ambientColour));
+			glUniform4fv(glGetUniformLocation(shader, "diffuseColour"), 1, glm::value_ptr(vertexGroup.material.diffuseColour));
+
+			glDrawArrays(GL_TRIANGLES, offset, vertexGroup.vertexCoordinates.size());
+			offset += vertexGroup.vertexCoordinates.size();
+		}
+	}
+
+	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(2);
+
+	glUseProgram(0);
+	glBindVertexArray(0);
+}
