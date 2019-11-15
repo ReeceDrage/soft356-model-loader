@@ -29,24 +29,35 @@ struct FaceRecord
 	vector<FaceRecordVertex> vertexVector;
 };
 
+struct TextureMap
+{
+	unsigned char* texture;
+
+	GLint height;
+	GLint width;
+	GLint channelCount;
+};
+
 struct MaterialData
 {
+	std::string materialName;
+
 	// Basic colouring and rendering variables
-	vec3 ambientColour;
-	vec3 diffuseColour;
-	vec3 specularColour;
-	vec3 emmissionColour;
+	vec4 ambientColour;
+	vec4 diffuseColour;
+	vec4 specularColour;
+	vec4 emissionColour;
 	float opticalDensity;
-	float specularColourWeight;
+	float specularExponent;
 	float dissolveTransparency;
 	GLuint illuminationModel;
 
 	// Texture rendering variables
-	char* ambientTextureMap;
-	char* diffuseTextureMap;
-	char* specularColourTextureMap;
-	char* specularHighlightMap;
-	char* alphaTextureMap;
+	TextureMap ambientTextureMap;
+	TextureMap diffuseTextureMap;
+	TextureMap specularColourTextureMap;
+	TextureMap specularHighlightMap;
+	TextureMap alphaTextureMap;
 };
 
 struct VertexGroup
